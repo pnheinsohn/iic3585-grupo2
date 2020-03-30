@@ -1,2 +1,5 @@
-# pnheinsohn-uc.cl
-Tareas Grupo 2 de Diseño Avanzado de Aplicaciones Web
+# Tareas de Diseño Avanzado de Aplicaciones Web
+
+## Integrantes del Grupo 2
+* Paul Heinsohn
+* Sebastián Carreño
