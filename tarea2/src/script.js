@@ -3,15 +3,11 @@ let nPlayers = 2;
 const NPLAYERSMIN = 2;
 const NPLAYERSMAX = 4;
 const WINNERKEYUPS = 100;
-// playersKeys = {"0": [q, w], "1": [a, s]}
-const playersKeys = {};
-// playersInputs = {"0": [inputHTML1, inputHTML2], "1": [inputHTML1, inputHTML2]}
-const playersInputs = {};
-// scores = {"0": score1, "1": score2}
-const scores = {};
-// playersStatus = [true, true]
-const playersStatus = [];
+const playersKeys = {};  // {"0": [q, w], "1": [a, s]}
+const playersInputs = {};  // {"0": [inputHTML1, inputHTML2], "1": [inputHTML1, inputHTML2]}
+const scores = {};  // {"0": score1, "1": score2}
 const timers = [];
+const playersStatus = [];  // [true, true]
 let blockingTime = false;
 
 // DOM Elements
@@ -36,30 +32,30 @@ const keyHandler = (event) => {
     else if (playerKeys[1] === key && playersStatus[index] && blockingTime) blockParticipants(index);
   });
   return scores;
-}
+};
 
 const printWinner = (scores) => {
   statusH.innerHTML = `PLAYER ${
   Object.values(scores).reduce((iMax, x, i, arr) =>
     x > arr[iMax] ? i : iMax, 0) + 1} WINS!`;
-}
+};
 
 const print = (val) => {
-  let element = document.createElement('p')
-  element.innerText = val
-  document.body.appendChild(element)
-}
+  let element = document.createElement('p');
+  element.innerText = val;
+  document.body.appendChild(element);
+};
 
 const addKeyBlock = (miliSeconds) => {
   const block = Rx.Observable.timer(miliSeconds);
   timers.push(block
           .finally()
           .subscribe(() => {statusH.innerText = 'Tell a joke (key N°2)!',
-                            blockingTime = true}))
+                            blockingTime = true}));
 };
 
 const addBlockTimer = (miliSeconds) => {
-  const blockTimer = Rx.Observable.timer(miliSeconds)
+  const blockTimer = Rx.Observable.timer(miliSeconds);
   timers.push(blockTimer
           .finally()
           .subscribe(() => unblockParticipants()));
@@ -109,7 +105,7 @@ const sendPlayersObserver = sendPlayersObs.subscribe(() => {
   numObserver.unsubscribe();
   setPlayers.style.display = "none";
   keysDiv.style.display = "block";
-  Array(nPlayers).fill().forEach((e, index) => {
+  Array(nPlayers).fill().forEach((e, index) => {  // Creación de inputs para nPlayers
     const divWrapper = document.createElement('div');
     const playerSpan = document.createElement("span");
     playerSpan.innerHTML = `Player ${index + 1}:`;
@@ -132,7 +128,7 @@ const sendPlayersObserver = sendPlayersObs.subscribe(() => {
 
 const sendKeysObserver = sendKeysObs.subscribe(() => {
   const keys = new Set();
-  Object.values(playersInputs).forEach(playerInputs => {
+  Object.values(playersInputs).forEach(playerInputs => {  // Validación de inputs
     playerInputs.map(input => input.value)
                 .filter(val => val !== "")
                 .forEach(val => keys.add(val));
@@ -147,7 +143,7 @@ const sendKeysObserver = sendKeysObs.subscribe(() => {
     gameDiv.style.display = "block";
     startTimer.subscribe(startTimerObserver);
   };
-})
+});
 
 const startTimerObserver = {
   next: value => statusH.innerHTML = `${value}`,
@@ -175,4 +171,4 @@ const keysObserver = {
   },
   error: err => console.log(err),
   complete: () => console.log(`Got a winner`)
-}
+};
