@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>G2Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="PokeDB">
+    <meta name="apple-mobile-web-app-title" content="PokeDB">
+    <meta name="theme-color" content="#8ebdd7">
+    <meta name="msapplication-navbutton-color" content="#8ebdd7">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body onload="onLoadAsync()">
+    <main>
+        <nav>
+            <h1>Pokemon DB</h1>
+            <ul>
+                <li>
+                    <input id="search_input" placeholder="Pokemon ID" />
+                    <button id="search_button" onclick="onSearchClickAsync()">Buscar</button>
+                </li>
+            </ul>
+        </nav>
+    </main>
+    <div id="main_pokemon">
+    </div>
+    <h1>Historial</h1>
+    <div id="history">
+    </div>
+</body>
+
+</html>
