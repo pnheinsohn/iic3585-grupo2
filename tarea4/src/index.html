@@ -4,14 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>G2Player</title>
+    <title>PokeDB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="manifest" href="manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="PokeDB">
-    <meta name="apple-mobile-web-app-title" content="PokeDB">
+    <meta name="application-name" content="PokeMarket">
+    <meta name="apple-mobile-web-app-title" content="PokeMarket">
     <meta name="theme-color" content="#8ebdd7">
     <meta name="msapplication-navbutton-color" content="#8ebdd7">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -23,20 +24,32 @@
 
 <body onload="onLoadAsync()">
     <main>
-        <nav>
-            <h1>Pokemon DB</h1>
-            <ul>
-                <li>
-                    <input id="search_input" placeholder="Pokemon ID" />
-                    <button id="search_button" onclick="onSearchClickAsync()">Buscar</button>
-                </li>
-            </ul>
-        </nav>
+        <ul>
+            <li><h1>Pokémon DataBase</h1></li>
+            <li>
+                <input id="search_input" placeholder="Pokemon ID" />
+                <button id="search_button" onclick="onSearchClickAsync()">Buscar</button>
+            </li>
+        </ul>
     </main>
-    <div id="main_pokemon">
-    </div>
-    <h1>Historial</h1>
-    <div id="history">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>Mis Pokémon</h2>
+            <div id="my_pokemon">
+                <span>No tienes ningún Pokémon en tu <i>wishlist</i></span>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <h2>Database</h2>
+            <h4>Resultado</h4>
+            <div id="main_pokemon">
+                <span>No hay resultados</span>
+            </div>
+            <h4>Historial de búsqueda</h4>
+            <div id="history">
+                <span>No hay búsquedas anteriores</span>
+            </div>
+        </div>
     </div>
 </body>
 

@@ -7,39 +7,38 @@
 }
 
 body {
-    background: #fdfdfd;
-    font-family: "Nunito", sans-serif;
     font-size: 1rem;
+    font-family: "Nunito", sans-serif;
 }
 
 main {
-    max-width: 900px;
     margin: auto;
-    padding: 0.5rem;
     text-align: center;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: #22b4b9;
 }
 
 ul {
-    list-style: none;
     display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
 }
 
 li {
-    margin-right: 1rem;
+    margin-right: 1%;
 }
 
 h1 {
-    color: #e74c3c;
-    margin-bottom: 0.5rem;
+    color: #f3f2f2;
 }
 
-#history {
+table, th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#history, #main_pokemon {
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -47,7 +46,8 @@ h1 {
 
 .pokemon_item {
     margin: 10px;
-    width: 250px;
+    width: 100px;
+    cursor: pointer;
 }
 
 .pokemon_item img {
