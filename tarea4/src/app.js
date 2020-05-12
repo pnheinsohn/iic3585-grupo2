@@ -1,10 +1,12 @@
 //create an empty array on startup
 let currentPokemon;
 let searchHistory = [];
+let favoritesList = [];
 const API_BASE = 'https://pokeapi.co/api/v2';
 const API_POKEMON = `${API_BASE}/pokemon`;
 const getPokemonImage = id => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 const HISTORY_STORAGE_KEY = 'HISTORY_KEY';
+const FAVORITES_STORAGE_KEY = 'FAVORITES_KEY';
 
 /**
  * generate a Pokémon tag
@@ -17,11 +19,12 @@ function buildPokemonMarkup(pokemon) {
 
     main_pokemon.innerHTML = '';
 
-    pokemon_item.addEventListener('click', addToWishlist);
+    pokemon_item.addEventListener('click', addToFavorites);
     pokemon_item.className = 'pokemon_item';
     pokemon_item.innerHTML =
         `<img class="pokemon_image" src=${getPokemonImage(pokemon.id)} />
-        <h6 class="pokemon_name">${pokemon.name}</h6>`;
+        <h6 class="pokemon_name">${pokemon.name}</h6>
+        <span><i>+/- favoritos</i></span>`;
 
     pokemon_stats.innerHTML =
         `<tr>
@@ -62,10 +65,44 @@ function buildPokemonHistory() {
 }
 
 /**
- * Adds to wishlist
+ * generate all favorite Pokémon imgs
  */
-function addToWishlist() {
-    console.log(currentPokemon);
+function buildPokemonFavorites() {
+    const favorites = document.querySelector('#favorites');
+    favorites.innerHTML = '';
+    favoritesList.forEach((pokemon, index) => {
+        const pokemon_item = document.createElement("div");
+        pokemon_item.addEventListener("click", function() {
+            buildPokemonMarkup(favoritesList[index]);
+        });
+        pokemon_item.innerHTML +=
+            `<div class="pokemon_item">
+                <img class="pokemon_image" src=${getPokemonImage(pokemon.id)} />
+                <h6 class="pokemon_name">${pokemon.name}</h6>
+            </div>`;
+            favorites.appendChild(pokemon_item);
+    });
+    return;
+}
+
+
+/**
+ * Adds to favorites
+ */
+function addToFavorites() {
+    let prevIndex = -1;
+    favoritesList.forEach((pkmn, index) => {
+        if (_.isEqual(pkmn, currentPokemon)) {
+            prevIndex = index;
+        }
+    });
+
+    if (prevIndex !== -1) {
+        favoritesList.splice(prevIndex, 1);
+    } else {
+        favoritesList.unshift(currentPokemon);
+    }
+    updateFavorites();
 }
 
 /**
@@ -109,6 +146,14 @@ function updateHistory(pokemon) {
 }
 
 /**
+ * add an pokemon to the history and updates display
+ */
+function updateFavorites() {
+    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favoritesList));
+    buildPokemonFavorites();
+}
+
+/**
  * loadAnpokemon from the internet and place it on a target element
  */
 async function onSearchClickAsync() {
@@ -130,17 +175,25 @@ async function onSearchClickAsync() {
 /**
  * The history is serialized as a JSON array. We use JSON.parse to convert is to a Javascript array
  */
-function getLocalHistory() {
-    return JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY))
+function getLocalStorageItem(key) {
+    return JSON.parse(localStorage.getItem(key));
 }
 
 async function onLoadAsync() {
     // Load the history from cache
-    let history = getLocalHistory();
+    let history = getLocalStorageItem(HISTORY_STORAGE_KEY);
     if (history !== null) {
         // Set the searchHistory array and update the display
         searchHistory = history;
         searchHistory.forEach(updateHistory);
+    }
+
+    // Load the favorites from cache
+    let favorites = getLocalStorageItem(FAVORITES_STORAGE_KEY);
+    if (favorites !== null) {
+        // Set the favoritesList array and update the display
+        favoritesList = favorites;
+        updateFavorites();
     }
 
     // Install the service worker
