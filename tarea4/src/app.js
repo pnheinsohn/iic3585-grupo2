@@ -22,13 +22,12 @@ const config = {
 firebase.initializeApp(config);
 const messaging = firebase.messaging();
 
-await new Promise(r => setTimeout(r, 13000));
 messaging
     .getToken()
     .then(token => {
-        console.log(token);
+        console.log("token: ", token);
         
-        body = {
+/*         body = {
             notification: {
                 title: "Nuevos Pokemones",
                 body: "¡Encuentra ya a los nuevos pokemones legendarios!",
@@ -47,7 +46,7 @@ messaging
             body: JSON.stringify(body)
         }
         
-        fetch("https://fcm.googleapis.com/fcm/send", options)
+        fetch("https://fcm.googleapis.com/fcm/send", options) */
 });
 
 
