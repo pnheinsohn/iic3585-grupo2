@@ -8,6 +8,19 @@ const getPokemonImage = id => `https://raw.githubusercontent.com/PokeAPI/sprites
 const HISTORY_STORAGE_KEY = 'HISTORY_KEY';
 const FAVORITES_STORAGE_KEY = 'FAVORITES_KEY';
 
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB3sarzfkTFGF3HQfQBDm5lpFlLvlEceDE",
+    authDomain: "pokemon-9f063.firebaseapp.com",
+    databaseURL: "https://pokemon-9f063.firebaseio.com",
+    projectId: "pokemon-9f063",
+    storageBucket: "pokemon-9f063.appspot.com",
+    messagingSenderId: "12179098135",
+    appId: "1:12179098135:web:96b019881354d45bde2a52",
+    measurementId: "G-D2ZGJ7NM96"
+};
+
+firebase.initializeApp(config);
 /**
  * generate a Pokémon tag
  */
