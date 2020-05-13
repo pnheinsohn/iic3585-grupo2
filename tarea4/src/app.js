@@ -8,6 +8,67 @@ const getPokemonImage = id => `https://raw.githubusercontent.com/PokeAPI/sprites
 const HISTORY_STORAGE_KEY = 'HISTORY_KEY';
 const FAVORITES_STORAGE_KEY = 'FAVORITES_KEY';
 
+const config = {
+    apiKey: "AIzaSyB3sarzfkTFGF3HQfQBDm5lpFlLvlEceDE",
+    authDomain: "pokemon-9f063.firebaseapp.com",
+    databaseURL: "https://pokemon-9f063.firebaseio.com",
+    projectId: "pokemon-9f063",
+    storageBucket: "pokemon-9f063.appspot.com",
+    messagingSenderId: "12179098135",
+    appId: "1:12179098135:web:96b019881354d45bde2a52",
+    measurementId: "G-D2ZGJ7NM96"
+};
+
+firebase.initializeApp(config);
+const messaging = firebase.messaging();
+
+messaging
+    .getToken()
+    .then(token => {
+        console.log("token:", token);
+        
+/*         body = {
+            notification: {
+                title: "Nuevos Pokemones",
+                body: "¡Encuentra ya a los nuevos pokemones legendarios!",
+                click_action: "https://pokemon-9f063.web.app",
+                icon: "https://pokemon-9f063.web.app/icons/pokeball_512.png"
+            },
+            to: "dnU2806x36MY2Cg63h8eQl:APA91bH8L_ekOtYKltXgZeqZegDV1wXfoAxO7mnBvFp2-r54aQOKuqw5WctBsUdA6bH_qA7prdfR9p0MIFJGEvY7vxlO_cfBk_9_f3IntecJCeR6X4jo5T4Jpa4kFZsaBTrxAvydhNi1"
+        }
+
+        const options = {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'key=AAAAAtXuShc:APA91bHlgb5Z33CwQpnebRBkhuspsKvrxtsN32lPoiFAdT9QG-8IHK8aLcqh-0vWIBaOyRp8HUkSJoe_u8x8oUFHUUSrghoydhZZ1sUTmAg1f7gQ_3ohTlGxAFzjjFPOaH2ASs1bAjeu'
+            },
+            body: JSON.stringify(body)
+        }
+        
+        fetch("https://fcm.googleapis.com/fcm/send", options) */
+});
+
+
+messaging
+    .requestPermission()
+    .then(() => {
+    //message.innerHTML = "Notifications allowed";
+    return messaging.getToken();
+    })
+    .then(token => {
+    //tokenString.innerHTML = "Token Is : " + token;
+    })
+    .catch(err => {
+    //errorMessage.innerHTML = errorMessage.innerHTML + "; " + err;
+    console.log("No permission to send push", err);
+    });
+
+messaging.onMessage(payload => {
+    console.log("Message received. ", payload);
+    const { title, ...options } = payload;
+});
+
 /**
  * generate a Pokémon tag
  */
