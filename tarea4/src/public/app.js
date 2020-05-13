@@ -8,8 +8,7 @@ const getPokemonImage = id => `https://raw.githubusercontent.com/PokeAPI/sprites
 const HISTORY_STORAGE_KEY = 'HISTORY_KEY';
 const FAVORITES_STORAGE_KEY = 'FAVORITES_KEY';
 
-
-const firebaseConfig = {
+const config = {
     apiKey: "AIzaSyB3sarzfkTFGF3HQfQBDm5lpFlLvlEceDE",
     authDomain: "pokemon-9f063.firebaseapp.com",
     databaseURL: "https://pokemon-9f063.firebaseio.com",
@@ -21,6 +20,54 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(config);
+const messaging = firebase.messaging();
+
+messaging
+    .getToken()
+    .then(token => {
+        console.log(token)
+        body = {
+            notification: {
+                title: "Testing Notification!",
+                body: "Firebase is awesome",
+                click_action: "http://127.0.0.1:5500/public/index.html",
+                icon: "http://the-link-to-image/icon.png"
+            },
+            to: token
+        }
+
+        const options = {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'key=AAAAAtXuShc:APA91bHlgb5Z33CwQpnebRBkhuspsKvrxtsN32lPoiFAdT9QG-8IHK8aLcqh-0vWIBaOyRp8HUkSJoe_u8x8oUFHUUSrghoydhZZ1sUTmAg1f7gQ_3ohTlGxAFzjjFPOaH2ASs1bAjeu'
+            },
+            body: JSON.stringify(body)
+        }
+        
+        fetch("https://fcm.googleapis.com/fcm/send", options)
+});
+
+
+messaging
+    .requestPermission()
+    .then(() => {
+    //message.innerHTML = "Notifications allowed";
+    return messaging.getToken();
+    })
+    .then(token => {
+    //tokenString.innerHTML = "Token Is : " + token;
+    })
+    .catch(err => {
+    //errorMessage.innerHTML = errorMessage.innerHTML + "; " + err;
+    console.log("No permission to send push", err);
+    });
+
+messaging.onMessage(payload => {
+    console.log("Message received. ", payload);
+    const { title, ...options } = payload.notification;
+});
+
 /**
  * generate a Pokémon tag
  */
@@ -212,7 +259,7 @@ async function onLoadAsync() {
     // Install the service worker
     if ('serviceWorker' in navigator) {
         try {
-            let serviceWorker = await navigator.serviceWorker.register('/sw.js')
+            let serviceWorker = await navigator.serviceWorker.register('../sw.js')
             console.log(`Service worker registered ${serviceWorker}`)
         } catch (err) {
             console.error(`Failed to register service worker: ${err}`)
