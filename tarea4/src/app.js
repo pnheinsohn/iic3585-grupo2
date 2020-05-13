@@ -22,18 +22,20 @@ const config = {
 firebase.initializeApp(config);
 const messaging = firebase.messaging();
 
+await new Promise(r => setTimeout(r, 13000));
 messaging
     .getToken()
     .then(token => {
-        console.log(token)
+        console.log(token);
+        
         body = {
             notification: {
-                title: "Testing Notification!",
-                body: "Firebase is awesome",
-                click_action: "http://127.0.0.1:5500/public/index.html",
-                icon: "http://the-link-to-image/icon.png"
+                title: "Nuevos Pokemones",
+                body: "¡Encuentra ya a los nuevos pokemones legendarios!",
+                click_action: "https://pokemon-9f063.web.app",
+                icon: "https://pokemon-9f063.web.app/icons/pokeball_512.png"
             },
-            to: token
+            to: "dnU2806x36MY2Cg63h8eQl:APA91bH8L_ekOtYKltXgZeqZegDV1wXfoAxO7mnBvFp2-r54aQOKuqw5WctBsUdA6bH_qA7prdfR9p0MIFJGEvY7vxlO_cfBk_9_f3IntecJCeR6X4jo5T4Jpa4kFZsaBTrxAvydhNi1"
         }
 
         const options = {
@@ -65,7 +67,7 @@ messaging
 
 messaging.onMessage(payload => {
     console.log("Message received. ", payload);
-    const { title, ...options } = payload.notification;
+    const { title, ...options } = payload;
 });
 
 /**
