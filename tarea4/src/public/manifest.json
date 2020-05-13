@@ -4,5 +4,17 @@
     "lang": "en-US",
     "start_url": "/",
     "display": "standalone",
-    "theme_color": "#8ebdd7"
+    "theme_color": "#22b4b9",
+    "icons": [
+      {
+        "src": "/icons/pokeball_192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/icons/pokeball_512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
   }
