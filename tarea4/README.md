@@ -12,7 +12,7 @@
 
 1. Al momento de desplegar la aplicación en el navegador, se emitirá el `token` de registro del cliente. Éste aparecerá impreso en la consola del navegador, y debe ser copiado para que envíe la notificación (se debe asegurar que la pestaña tenga permisos para recibir notificaciones).
 
-2. Para probar las notificaciones, se puede utilizar una aplicación que permita enviar solicitudes `http` (se recomienda `Postman`). Aquí se debe crear una solicitud de tipo POST mediante la [página (click aquí)](https://fcm.googleapis.com/fcm/send) con los siguientes campos:
+2. Para probar las notificaciones, se puede utilizar una aplicación que permita enviar solicitudes `http` (se recomienda `Postman`). Aquí se debe crear una solicitud de tipo `POST` mediante la [página (click aquí)](https://fcm.googleapis.com/fcm/send) con los siguientes campos:
 
     ```JSON
     Body: {
