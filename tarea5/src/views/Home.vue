@@ -21,7 +21,6 @@ export default {
   data() {
     return {
       albums: [],
-      albumName: ''
     }
   },
   async created() {
@@ -34,13 +33,28 @@ export default {
     }
   },
   methods: {
-    async addAlbum() {
-      console.log('addAlbum...');
-      const res = await axios.post(localMainURL, { name: this.albumName });
-      //this.albums = [...this.albums, res.data];
-      console.log(res);
-      this.albums = [...this.albums];
-      this.albumName = '';
+    async addAlbum(albumData) {
+
+      const res1 = await axios.get(localMainURL, {
+        params: {
+          mbid: albumData.mbid,
+        }
+      });
+      if (res1.data.length) {
+        console.log("ya existe");
+      }
+      else {
+        const newAlbum = {
+          mbid: albumData.mbid,
+          name: albumData.name,
+          artist: albumData.artist,
+          review: "Excelent record.",
+          score: 5,
+          image: albumData.image[2]['#text'],
+        }
+        const res = await axios.post(localMainURL, newAlbum);
+        this.albums = [...this.albums, res.data];
+      }
     }
   }
 }
