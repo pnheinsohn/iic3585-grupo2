@@ -1,0 +1,36 @@
+{
+  "albums": [
+    {
+      "id": 0,
+      "name": "Siamese Dream",
+      "artist": "Smashing Pumpkins",
+      "review": "Excelent record.",
+      "score": 5,
+      "image": "@/assets/siamese-dream.jpg"
+    },
+    {
+      "id": 1,
+      "name": "The Wall",
+      "artist": "Pink Floyd",
+      "review": "Water's masterpiece.",
+      "score": 3.5,
+      "image": "@/assets/the-wall.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Physical Graffiti",
+      "artist": "Led Zeppelin",
+      "review": "Extense and powerful piece of art.",
+      "score": 5,
+      "image": "@/assets/physical-graffiti.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Bocanada",
+      "artist": "Gustavo Cerati",
+      "review": "Cambió la música latinoamericana para siempre.",
+      "score": 5,
+      "image": "@/assets/bocanada.jpg"
+    }
+  ]
+}

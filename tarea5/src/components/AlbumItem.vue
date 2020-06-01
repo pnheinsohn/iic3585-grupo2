@@ -16,7 +16,7 @@
       </star-rating>
     </div>
     <div class="album-cover-container">
-      <img class="album-cover" :src="require('@/assets' + album.image)" />
+      <img class="album-cover" :src=album.image />
     </div>
     
   </div>
@@ -38,6 +38,7 @@ export default {
   .album-name {
     flex: 2;
     height: 50px;
+    color: black;
   }
 
   .album-artist {
@@ -47,8 +48,8 @@ export default {
   }
 
   .album-cover {
-    height: 100%;
-    width: 100%;
+    height: 95%;
+    width: 95%;
     object-fit: cover;
     margin: 10px;
     margin-left: auto;

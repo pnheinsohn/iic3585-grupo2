@@ -1,32 +1,44 @@
 <template>
   <div>
     <form @submit.prevent="addAlbum">
-      <input type="text" v-model="title" name="name" placeholder="Album Name...">
-      <input type="submit" value="Submit" class="btn">
+      <input type="text" v-model="name" name="name" placeholder="Album Name...">
+      <input type="text" v-model="artist" name="artist" placeholder="Artist...">
+      <input type="submit" value="Search" class="btn">
     </form>
   </div>
 </template>
 
 
 <script>
-const localMainURL = "http://localhost:3000/albums";
 import axios from 'axios';
+
+const apiMainURL = "http://ws.audioscrobbler.com/2.0";
 
 export default {
   name: "AddAlbum",
   data() {
     return {
-      title: ''
+      name: '',
+      artist: '',
     }
   },
   methods: {
     async addAlbum() {
-      console.log('addAlbum...');
-      const res = await axios.post(localMainURL, { name: this.albumName });
-      //this.albums = [...this.albums, res.data];
-      console.log(res);
-      this.albums = [...this.albums];
-      this.albumName = '';
+      const reqParams = {
+        method: 'album.getInfo',
+        api_key: '6081f1c822d7ebd50f51a34cc9000bd6',
+        album: this.name,
+        artist: this.artist,
+        format: 'json',
+      }
+      const res = await axios.get(apiMainURL, {
+        params: reqParams
+      });
+      // Send up to parent
+      this.$emit('add-album', res.data.album);
+
+      this.name = '';
+      this.artist = '';
     }
   }
 }
