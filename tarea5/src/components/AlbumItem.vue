@@ -38,6 +38,7 @@ export default {
   .album-name {
     flex: 2;
     height: 50px;
+    color: black;
   }
 
   .album-artist {

@@ -8,10 +8,6 @@
 <script>
 import Header from './components/layout/Header';
 
-import Vue from 'vue';
-import VueCarousel from 'vue-carousel';
-Vue.use(VueCarousel);
-
 export default {
   name: 'App',
   components: {

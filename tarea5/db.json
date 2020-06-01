@@ -71,6 +71,33 @@
       "score": 5,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/f251761b591749bdc968929e8bd18fa0.png",
       "id": 8
+    },
+    {
+      "mbid": "5d5c5f4d-0e59-4ed1-8e11-db26df94e8a4",
+      "name": "La Biblia",
+      "artist": "Vox Dei",
+      "review": "Excelent record.",
+      "score": 5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/c8316cd7aea3461482e9a77cb6b2ca51.png",
+      "id": 9
+    },
+    {
+      "mbid": "8a36348d-c96b-46c3-adc6-faf765597a07",
+      "name": "Bocanada",
+      "artist": "Gustavo Cerati",
+      "review": "Excelent record.",
+      "score": 5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/b9e3f62f82e8961e034052b7dc0e8bf1.png",
+      "id": 10
+    },
+    {
+      "mbid": "98628230-6bdf-40f1-b5da-141157acba27",
+      "name": "Physical Graffiti",
+      "artist": "Led Zeppelin",
+      "review": "Excelent record.",
+      "score": 5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/afda1e0f83e94234c22bac691f92b2b0.png",
+      "id": 11
     }
   ]
 }
