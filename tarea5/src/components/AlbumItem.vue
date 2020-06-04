@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="album-card">
+    <span class="xButton" @click="$emit('remove-album', album.id)">x</span>
     <h2 class="album-name">
       {{album.name}}
     </h2>
@@ -12,7 +13,8 @@
         v-bind:increment=0.5
         v-bind:show-rating=false
         v-bind:star-size=30
-        v-bind:inline=true>
+        v-bind:inline=true
+        @rating-selected="updateRating($event, album)">
       </star-rating>
     </div>
     <div class="album-cover-container">
@@ -23,22 +25,54 @@
 </template>
 
 <script>
+/* import Vuex from 'vuex'; */
 import StarRating from 'vue-star-rating';
+import axios from 'axios';
+
+const localMainURL = "http://localhost:3000/albums";
+
+/* const store = new Vuex.Store({
+  state: {
+    score: 0
+  },
+  mutations: {
+
+  },
+  actions: {
+  
+  },
+  getters:{
+
+  },
+}); */
 
 export default {
   name: "AlbumItem",
   props: ["album"],
   components: {
     StarRating
+  },
+  methods: {
+    async updateRating(rating, album){
+      await axios.patch(localMainURL + '/' + album.id, {
+          score: rating,
+      });
+    },
   }
 }
 </script>
 
 <style scoped>
+  .album-card {
+    background-color: black;
+    padding: 10px;
+    margin: 2px;
+  }
+
   .album-name {
     flex: 2;
     height: 50px;
-    color: black;
+    color: white;
   }
 
   .album-artist {
@@ -75,5 +109,11 @@ export default {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .xButton {
+    position: relative;
+    left:90px;
+    top:1px;
   }
 </style>

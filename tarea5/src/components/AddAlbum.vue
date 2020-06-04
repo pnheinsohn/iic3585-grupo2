@@ -39,7 +39,7 @@ export default {
 
       this.name = '';
       this.artist = '';
-    }
+    },
   }
 }
 </script>
