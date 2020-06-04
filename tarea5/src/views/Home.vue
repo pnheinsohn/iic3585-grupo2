@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AddAlbum v-on:add-album="addAlbum" />
-    <Albums v-bind:albums="albums" />
+    <Albums v-bind:albums="albums" v-on:remove-album="removeAlbum" />
   </div>
 </template>
 
@@ -41,7 +41,7 @@ export default {
         }
       });
       if (res1.data.length) {
-        console.log("ya existe");
+        console.log("Álbum ya existe");
       }
       else {
         const newAlbum = {
@@ -49,13 +49,17 @@ export default {
           name: albumData.name,
           artist: albumData.artist,
           review: "Excelent record.",
-          score: 5,
+          score: 0,
           image: albumData.image[2]['#text'],
         }
         const res = await axios.post(localMainURL, newAlbum);
         this.albums = [...this.albums, res.data];
       }
-    }
+    },
+    async removeAlbum(albumId) {
+      await axios.delete(localMainURL + '/' + albumId);
+      this.albums = this.albums.filter(album => album.id !== albumId);
+    },
   }
 }
 </script>

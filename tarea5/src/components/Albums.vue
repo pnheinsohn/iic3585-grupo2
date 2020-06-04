@@ -3,13 +3,14 @@
   ref="my-carousel"
   :loop="true"
   :autoplay="true"
-  :autoplayTimeout="6000"
+  :autoplayTimeout="10000"
   :autoplayHoverPause="true"
   :perPage="4"
   :navigationEnabled="true"
   :speed="1500">
-      <slide v-bind:key="album.id" v-for="album in albums">
-          <AlbumItem v-bind:album="album" />
+      <slide v-bind:key="album.id" v-for="album in albums.slice().reverse()">
+          <AlbumItem v-bind:album="album" v-on:remove-album="$emit('remove-album',
+            album.id)"/>
       </slide>
   </carousel>
 </template>

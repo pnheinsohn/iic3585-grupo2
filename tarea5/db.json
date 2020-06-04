@@ -14,7 +14,7 @@
       "name": "Dynamo",
       "artist": "Soda Stereo",
       "review": "Excelent record.",
-      "score": 5,
+      "score": 3.5,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/37ed65c07eba40a5b544e9f1e31dbfb5.png",
       "id": 2
     },
@@ -28,29 +28,11 @@
       "id": 3
     },
     {
-      "mbid": "15ddcc8d-968e-49a1-bd14-b05a718d2b24",
-      "name": "Wild Mood Swings",
-      "artist": "The Cure",
-      "review": "Excelent record.",
-      "score": 5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/d76eebcaaa9a0b16c20da03bcccad8fa.png",
-      "id": 4
-    },
-    {
-      "mbid": "169149c3-85b6-41a6-bca6-ce848f8ef94c",
-      "name": "Siamese Dream",
-      "artist": "The Smashing Pumpkins",
-      "review": "Excelent record.",
-      "score": 5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/3445738866364d779db6339c15e3d820.png",
-      "id": 5
-    },
-    {
       "mbid": "bc5a0db2-a123-4a29-bb75-de01c52da293",
       "name": "Led Zeppelin",
       "artist": "Led Zeppelin",
       "review": "Excelent record.",
-      "score": 5,
+      "score": 4.5,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/ab98765121364a478d0136f48a477bd8.png",
       "id": 6
     },
@@ -77,7 +59,7 @@
       "name": "La Biblia",
       "artist": "Vox Dei",
       "review": "Excelent record.",
-      "score": 5,
+      "score": 4,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/c8316cd7aea3461482e9a77cb6b2ca51.png",
       "id": 9
     },
@@ -98,6 +80,33 @@
       "score": 5,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/afda1e0f83e94234c22bac691f92b2b0.png",
       "id": 11
+    },
+    {
+      "mbid": "e12f53a3-e912-321d-bdc7-ed17ec525ec0",
+      "name": "Abbey Road",
+      "artist": "The Beatles",
+      "review": "Excelent record.",
+      "score": 5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/2ce29f74a6f54b8791e5fdacc2ba36f5.png",
+      "id": 12
+    },
+    {
+      "mbid": "024e45a1-ea0f-4f31-8f06-f0c4fa1e403b",
+      "name": "Sabotage",
+      "artist": "Black Sabbath",
+      "review": "Excelent record.",
+      "score": 3.5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/edac0807829c737a478bb4c3468ea4e3.png",
+      "id": 13
+    },
+    {
+      "mbid": "cb74d80b-daf8-4ded-b0c6-3120a833367a",
+      "name": "Parte de la Religión",
+      "artist": "Charly García",
+      "review": "Excelent record.",
+      "score": 5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/ef416f4c789743e7c3bf56bdf2fec765.png",
+      "id": 14
     }
   ]
 }

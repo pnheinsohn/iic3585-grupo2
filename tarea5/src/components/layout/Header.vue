@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1>Albums</h1>
+    <h1>Album Carousel</h1>
     
   </header>
 </template>
