@@ -5,7 +5,7 @@
   :autoplay="true"
   :autoplayTimeout="10000"
   :autoplayHoverPause="true"
-  :perPage="4"
+  :perPage="6"
   :navigationEnabled="true"
   :speed="1500">
       <slide v-bind:key="album.id" v-for="album in albums.slice().reverse()">
@@ -27,9 +27,9 @@ export default {
     Slide,
   },
   props: ["albums"],
-  mounted() {
+  /* mounted() {
     this.$refs['my-carousel'].currentPage = this.$refs['my-carousel'].pageCount;
-  }
+  } */
   
 }
 
