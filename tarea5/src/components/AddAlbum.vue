@@ -34,7 +34,6 @@ export default {
       const res = await axios.get(apiMainURL, {
         params: reqParams
       });
-      console.log(res);
       // Send up to parent
       this.$emit('add-album', res.data.album);
 
