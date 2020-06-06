@@ -113,7 +113,8 @@ export default {
 
   .xButton {
     position: relative;
-    left:90px;
-    top:1px;
+    display: flex;
+    left:91%;
+    top:0%;
   }
 </style>

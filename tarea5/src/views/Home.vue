@@ -35,12 +35,12 @@ export default {
   methods: {
     async addAlbum(albumData) {
 
-      const res1 = await axios.get(localMainURL, {
+      const getRes = await axios.get(localMainURL, {
         params: {
           mbid: albumData.mbid,
         }
       });
-      if (res1.data.length) {
+      if (getRes.data.length) {
         console.log("Álbum ya existe");
       }
       else {
@@ -48,7 +48,7 @@ export default {
           mbid: albumData.mbid,
           name: albumData.name,
           artist: albumData.artist,
-          review: "Excelent record.",
+          reviews: [],
           score: 0,
           image: albumData.image[2]['#text'],
         }

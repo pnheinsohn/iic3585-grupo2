@@ -24,7 +24,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-## Run App
+## Run the next two commands in the root directory of the project
 
 ## Run App in http://localhost:8080
 ```
