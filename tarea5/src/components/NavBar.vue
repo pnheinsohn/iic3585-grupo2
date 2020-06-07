@@ -39,9 +39,10 @@ export default {
 <style scoped>
   .menu-label {
     color: black;
+    text-decoration: none;
   }
   .link-label {
-    color: black;
+    color: #b52e31;
     text-decoration: none;
   }
 </style>

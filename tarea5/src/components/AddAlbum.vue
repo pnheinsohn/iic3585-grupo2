@@ -1,11 +1,9 @@
 <template>
-  <div>
     <form @submit.prevent="addAlbum">
-      <input type="text" v-model="name" name="name" placeholder="Album Name...">
+      <input type="text" v-model="name" name="name" placeholder="Album...">
       <input type="text" v-model="artist" name="artist" placeholder="Artist...">
       <input type="submit" value="Search" class="btn">
     </form>
-  </div>
 </template>
 
 
@@ -47,6 +45,7 @@ export default {
 <style scoped>
   form {
     display: flex;
+    padding: 0px;
   }
 
   input[type="text"] {

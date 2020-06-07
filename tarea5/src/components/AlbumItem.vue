@@ -31,21 +31,6 @@ import axios from 'axios';
 
 const localMainURL = "http://localhost:3000/albums";
 
-/* const store = new Vuex.Store({
-  state: {
-    score: 0
-  },
-  mutations: {
-
-  },
-  actions: {
-  
-  },
-  getters:{
-
-  },
-}); */
-
 export default {
   name: "AlbumItem",
   props: ["album"],
@@ -71,7 +56,7 @@ export default {
 
   .album-name {
     flex: 2;
-    height: 50px;
+    height: 30px;
     color: white;
   }
 
@@ -79,6 +64,7 @@ export default {
     flex: 1;
     height: 20px;
     color: #1DB954;
+    margin: 15px;
   }
 
   .album-cover {

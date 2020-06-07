@@ -37,15 +37,6 @@
       "id": 8
     },
     {
-      "mbid": "8a36348d-c96b-46c3-adc6-faf765597a07",
-      "name": "Bocanada",
-      "artist": "Gustavo Cerati",
-      "reviews": [],
-      "score": 5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/b9e3f62f82e8961e034052b7dc0e8bf1.png",
-      "id": 10
-    },
-    {
       "mbid": "cb74d80b-daf8-4ded-b0c6-3120a833367a",
       "name": "Parte de la Religión",
       "artist": "Charly García",
@@ -80,14 +71,29 @@
       "score": 5,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/fafc74a8f45241acc10158be6e2d8270.png",
       "id": 19
+    },
+    {
+      "mbid": "8a36348d-c96b-46c3-adc6-faf765597a07",
+      "name": "Bocanada",
+      "artist": "Gustavo Cerati",
+      "reviews": [],
+      "score": 0,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/b9e3f62f82e8961e034052b7dc0e8bf1.png",
+      "id": 20
     }
   ],
   "playlists": [
     {
       "id": 1,
-      "name": "Música de invierno",
+      "name": "Música argentina",
       "albumIds": [
-        19
+        2,
+        3,
+        8,
+        14,
+        16,
+        17,
+        20
       ]
     }
   ]
