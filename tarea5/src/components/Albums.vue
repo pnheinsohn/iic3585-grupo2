@@ -7,7 +7,8 @@
   :autoplayHoverPause="true"
   :perPage="6"
   :navigationEnabled="true"
-  :speed="1500">
+  :speed="1500"
+  :centerMode="true">
       <slide v-bind:key="album.id" v-for="album in albums.slice().reverse()">
           <AlbumItem v-bind:album="album" v-on:remove-album="$emit('remove-album',
             album.id)"/>
@@ -30,7 +31,6 @@ export default {
   /* mounted() {
     this.$refs['my-carousel'].currentPage = this.$refs['my-carousel'].pageCount;
   } */
-  
 }
 
 

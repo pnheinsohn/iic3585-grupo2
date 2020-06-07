@@ -12,6 +12,12 @@ export default new Router({
       component: Home
     },
     {
+      path: '/playlist/:id',
+      name: 'playlist',
+      component: () =>
+        import(/* webpackChunkName: "playlist" */ './components/PlaylistItem.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

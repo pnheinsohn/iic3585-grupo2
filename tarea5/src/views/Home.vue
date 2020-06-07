@@ -26,7 +26,6 @@ export default {
   async created() {
     try {
       const res = await axios.get(localMainURL);
-
       this.albums = res.data;
     } catch(error) {
       console.error(error);

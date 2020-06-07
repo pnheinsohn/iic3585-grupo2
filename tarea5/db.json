@@ -28,15 +28,6 @@
       "id": 3
     },
     {
-      "mbid": "fe0aec30-6538-4ff6-98e1-2af99e93ac1f",
-      "name": "Led Zeppelin II",
-      "artist": "Led Zeppelin",
-      "reviews": [],
-      "score": 4.5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/79eb7925a57079641e698093417efde7.png",
-      "id": 7
-    },
-    {
       "mbid": "c59220cd-5956-4576-b521-a47f738f2ed4",
       "name": "Invisible",
       "artist": "Invisible",
@@ -53,24 +44,6 @@
       "score": 5,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/b9e3f62f82e8961e034052b7dc0e8bf1.png",
       "id": 10
-    },
-    {
-      "mbid": "98628230-6bdf-40f1-b5da-141157acba27",
-      "name": "Physical Graffiti",
-      "artist": "Led Zeppelin",
-      "reviews": [],
-      "score": 5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/afda1e0f83e94234c22bac691f92b2b0.png",
-      "id": 11
-    },
-    {
-      "mbid": "024e45a1-ea0f-4f31-8f06-f0c4fa1e403b",
-      "name": "Sabotage",
-      "artist": "Black Sabbath",
-      "reviews": [],
-      "score": 4,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/edac0807829c737a478bb4c3468ea4e3.png",
-      "id": 13
     },
     {
       "mbid": "cb74d80b-daf8-4ded-b0c6-3120a833367a",
@@ -107,6 +80,15 @@
       "score": 5,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/fafc74a8f45241acc10158be6e2d8270.png",
       "id": 19
+    }
+  ],
+  "playlists": [
+    {
+      "id": 1,
+      "name": "Música de invierno",
+      "albumIds": [
+        19
+      ]
     }
   ]
 }
