@@ -1,7 +1,7 @@
 import axios from 'axios';
 import albums from './albums';
 
-const localCollectionsURL = "http://localhost:3000/playlists";
+const localCollectionsURL = "http://localhost:3000/collections";
 
 const state = {
     collections: [],

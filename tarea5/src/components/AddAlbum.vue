@@ -44,12 +44,12 @@ export default {
 
 <style scoped>
   form {
-    display: flex;
     padding: 0px;
+    position:absolute; left:35%; top:80%;
   }
 
   input[type="text"] {
-    flex: 10;
+    flex: 1;
     padding: 5px;
   }
 
