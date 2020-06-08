@@ -6,14 +6,14 @@
       <router-link
         class="link-label"
         to="/">Home</router-link>
-      <p class="menu-label">Playlists</p>
-      <li v-bind:key="playlist.id" v-for="playlist in playlists.slice().reverse()">
+      <p class="menu-label">Collections</p>
+      <li v-bind:key="collection.id" v-for="collection in collections.slice().reverse()">
           <router-link
             :to="{
-              name: 'playlist',
-              params: { id: playlist.id }
+              name: 'collection',
+              params: { id: collection.id }
             }"
-            class="link-label"> {{ playlist.name }}
+            class="link-label"> {{ collection.name }}
           </router-link>
       </li>
     </ul>
@@ -23,14 +23,13 @@
 </template>
 
 <script>
-//import PlaylistItem from './PlaylistItem.vue';
 
 export default {
   name: "NavBar",
   components: {
-    //PlaylistItem,
+    
   },
-  props: ["playlists"],
+  props: ["collections"],
 }
 
 

@@ -12,10 +12,10 @@ export default new Router({
       component: Home
     },
     {
-      path: '/playlist/:id',
-      name: 'playlist',
+      path: '/collection/:id',
+      name: 'collection',
       component: () =>
-        import(/* webpackChunkName: "playlist" */ './components/PlaylistItem.vue'),
+        import(/* webpackChunkName: "collection" */ './components/CollectionItem.vue'),
     },
     {
       path: '/about',

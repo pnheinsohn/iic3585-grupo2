@@ -34,7 +34,6 @@ export default {
   computed: mapGetters(["allAlbums"]),
   methods: {
     ...mapActions(["fetchAlbums", "addAlbum", "removeAlbum"]),
-    
   }
 }
 </script>
