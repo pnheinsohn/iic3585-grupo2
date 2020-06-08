@@ -37,15 +37,6 @@
       "id": 8
     },
     {
-      "mbid": "cb74d80b-daf8-4ded-b0c6-3120a833367a",
-      "name": "Parte de la Religión",
-      "artist": "Charly García",
-      "reviews": [],
-      "score": 5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/ef416f4c789743e7c3bf56bdf2fec765.png",
-      "id": 14
-    },
-    {
       "mbid": "2ad76c80-f8f2-4e98-ac2f-3d4af9b06cd2",
       "name": "Say No More",
       "artist": "Charly García",
@@ -55,22 +46,13 @@
       "id": 16
     },
     {
-      "mbid": "a623132b-c433-46a9-817a-7c0d88fd8d7f",
-      "name": "Fuerza Natural",
-      "artist": "Gustavo Cerati",
+      "mbid": "b13f061a-bd3c-3aaf-9a60-64a0c6f7aee5",
+      "name": "Kid A",
+      "artist": "Radiohead",
       "reviews": [],
-      "score": 5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/55c759fcaee9491d974bb2a3a4c46651.png",
+      "score": 0,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/248cb85037351002251836e5f2f0d76b.png",
       "id": 17
-    },
-    {
-      "mbid": "c7f648e2-9c6d-32df-b5ee-ccab3e696a51",
-      "name": "Revolver",
-      "artist": "The Beatles",
-      "reviews": [],
-      "score": 5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/fafc74a8f45241acc10158be6e2d8270.png",
-      "id": 19
     },
     {
       "mbid": "8a36348d-c96b-46c3-adc6-faf765597a07",
@@ -79,16 +61,7 @@
       "reviews": [],
       "score": 0,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/b9e3f62f82e8961e034052b7dc0e8bf1.png",
-      "id": 20
-    },
-    {
-      "mbid": "a2f73eb8-eee6-3588-8909-9046058a468e",
-      "name": "Wish You Were Here",
-      "artist": "Pink Floyd",
-      "reviews": [],
-      "score": 0,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/394cfbc6b2a74766a4364778c641ca51.png",
-      "id": 21
+      "id": 18
     }
   ],
   "playlists": [
@@ -96,23 +69,18 @@
       "id": 1,
       "name": "Música argentina",
       "albumIds": [
-        2,
         3,
-        8,
-        14,
         16,
-        17,
-        20,
-        19
+        8,
+        18
       ]
     },
     {
       "id": 2,
       "name": "Música en inglés",
       "albumIds": [
-        1,
-        19,
-        21
+        8,
+        3
       ]
     }
   ]

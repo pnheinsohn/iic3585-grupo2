@@ -2,10 +2,13 @@ import axios from 'axios';
 import collections from './collections';
 
 const localMainURL = "http://localhost:3000/albums";
+const localCollectionsURL = "http://localhost:3000/playlists";
+
 
 const state = {
     albums: [],
     shownAlbums: [],
+    shownCollectionId: 0,
 };
 
 const getters = {
@@ -24,6 +27,7 @@ const actions = {
       const albums = state.albums
         .filter(album => collection.albumIds.includes(album.id));
       commit('setShownAlbums', albums);
+      commit('setShownCollectionId', collectionId);
     },
     async addAlbum({ commit }, albumData) {
 
@@ -54,6 +58,20 @@ const actions = {
         await axios.delete(localMainURL + '/' + albumId);
         commit('removeAlbum', albumId);
     },
+    async removeFromCollection({ commit }, albumId) {
+        const collection = collections.state.collections
+            .filter(collection => collection.id == state.shownCollectionId)[0];
+        collection.albumIds = collection.albumIds
+            .filter(id => id != albumId);
+        await axios.patch(localCollectionsURL + '/' + collection.id, {
+            albumIds: collection.albumIds,
+        });
+        const album = state.albums
+            .filter(album => album.id == albumId)[0];
+        album.collections = album.collections
+            .filter(id => id != collection.id);
+        commit('removeFromShownAlbums', albumId);
+    }
     
 };
 
@@ -74,7 +92,15 @@ const mutations = {
   (state.albums = state.albums.filter(album => album.id !== id)),
   setShownAlbums: (state, albums) => {
     state.shownAlbums = albums;
+  },
+  removeFromShownAlbums: (state, albumId) => {
+    state.shownAlbums = state.shownAlbums
+      .filter(album => album.id != albumId);
+  },
+  setShownCollectionId: (state, collectionId) => {
+    state.shownCollectionId = collectionId;
   }
+
 };
 
 

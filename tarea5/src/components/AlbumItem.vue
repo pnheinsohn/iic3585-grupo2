@@ -78,12 +78,8 @@ export default {
     margin: 10px;
     margin-left: auto;
     margin-right: auto;
-
     cursor: pointer;
-
   }
-
-  
 
   .album-cover-container {
     flex: 1;
@@ -111,5 +107,6 @@ export default {
     display: flex;
     left:91%;
     top:0%;
+    cursor: pointer;
   }
 </style>

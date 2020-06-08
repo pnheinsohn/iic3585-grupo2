@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const localCollectionsURL = "http://localhost:3000/playlists";
-/* const localAlbumsURL = "http://localhost:3000/albums"; */
 
 const state = {
     collections: [],
@@ -34,10 +33,6 @@ const actions = {
 const mutations = {
     setCollections: (state, collections) => (state.collections = collections),
     newCollection: (state, collection) => state.collections.unshift(collection),
-    setCollectionsAlbums: (state, collection) => {
-        console.log(state)
-        console.log(collection)
-    }
 };
 
 

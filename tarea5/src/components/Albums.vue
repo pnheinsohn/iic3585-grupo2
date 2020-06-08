@@ -10,8 +10,9 @@
     :speed="1500"
     :centerMode="true">
     <slide v-bind:key="album.id" v-for="album in allAlbums.slice().reverse()">
-        <AlbumItem v-bind:album="album" v-on:remove-album="$emit('remove-album',
-          album.id)"/>
+        <AlbumItem
+        v-bind:album="album"
+        v-on:remove-album="$emit('remove-album', album.id)"/>
     </slide>
   </carousel>
 </template>

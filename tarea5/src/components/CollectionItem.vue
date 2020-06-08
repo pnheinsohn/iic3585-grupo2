@@ -9,20 +9,21 @@
         :navigationEnabled="true"
         :speed="1500"
         :centerMode="true">
-        <slide v-bind:key="album.id" v-for="album in shownAlbums.slice().reverse()">
-            <AlbumItem v-bind:album="album" v-on:remove-album="removeAlbum"/>
+        <slide
+            v-bind:key="album.id"
+            v-for="album in shownAlbums.slice().reverse()">
+            <AlbumItem
+                v-bind:album="album"
+                v-on:remove-album="removeFromCollection"/>
         </slide>
     </carousel>
 </template>
 
 <script>
-import axios from 'axios';
 import AlbumItem from './AlbumItem.vue';
 import { Carousel, Slide } from 'vue-carousel';
 import { mapGetters, mapActions } from 'vuex';
 
-/* const localAlbumsURL = "http://localhost:3000/albums"; */
-const playlistsURL = "http://localhost:3000/playlists";
 
 export default {
     name: 'CollectionItem',
@@ -73,16 +74,9 @@ export default {
     methods: {
         ...mapActions([
         "fetchAlbums",
-        "changeShownAlbums"
+        "changeShownAlbums",
+        "removeFromCollection"
         ]),
-        async removeAlbum(albumId) {
-            this.albums = this.albums.filter((album) => album.id !== albumId);
-            this.albumIds = this.albumIds.filter((id) => id !== albumId);
-            console.log(this.$route.params.id)
-            await axios.patch(playlistsURL + '/' + this.$route.params.id, {
-                albumIds: this.albumIds,
-            });
-        },
     }
 }
 </script>

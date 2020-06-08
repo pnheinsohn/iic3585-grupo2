@@ -24,9 +24,6 @@
           v-bind:key="collection.id"
           v-for="collection in allCollections.slice().reverse()"
         >
-          <label for="checkbox">
-            {{ modalAlbum.collections }}
-          </label>
           <input
             type="checkbox"
             id="checkbox"
@@ -120,7 +117,7 @@ export default {
 
   .addToPlaylistModal {
     position: fixed;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 99;

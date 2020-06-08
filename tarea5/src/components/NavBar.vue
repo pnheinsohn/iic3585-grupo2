@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ul>
+    <ul class="whole-menu">
     <h1 class="menu-label">Menu</h1>
     
       <router-link
@@ -8,19 +8,20 @@
         to="/">Home</router-link>
       <p class="menu-label">Collections</p>
       <li v-bind:key="collection.id" v-for="collection in collections.slice().reverse()">
-          <router-link
-            @click="changeShownAlbums(collection.id)"
-            :to="{
-              name: 'collection',
-              params: { id: collection.id }
-            }"
-            class="link-label"
-            
-          >
-          <span v-on:click="changeShownAlbums(collection.id)">
-            {{ collection.name }}
-          </span>
-          </router-link>
+          <div>
+            <router-link
+              @click="changeShownAlbums(collection.id)"
+              :to="{
+                name: 'collection',
+                params: { id: collection.id }
+              }"
+              class="link-label"
+            >
+            <span v-on:click="changeShownAlbums(collection.id)">
+              {{ collection.name }}
+            </span>
+            </router-link>
+          </div>
       </li>
     </ul>
     
@@ -54,4 +55,10 @@ export default {
     color: #b52e31;
     text-decoration: none;
   }
+
+  .whole-menu li + li:before {
+      content: ".";
+      color: black;
+  }
+
 </style>
