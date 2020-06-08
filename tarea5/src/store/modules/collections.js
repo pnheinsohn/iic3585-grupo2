@@ -1,4 +1,5 @@
 import axios from 'axios';
+import albums from './albums';
 
 const localCollectionsURL = "http://localhost:3000/playlists";
 
@@ -22,11 +23,24 @@ const actions = {
         }
         else {
             collection.albumIds = collection.albumIds.filter(id => id != album.id);
+            
         }
         await axios.patch(localCollectionsURL + '/' + collection.id, {
             albumIds: collection.albumIds,
         });
+        if (albums.state.shownCollectionId == collection.id) {
+            albums.state.shownAlbums = albums.state.albums
+                .filter(album => collection.albumIds.includes(album.id));
+        } 
     },
+    async addCollection( { commit }, name ) {
+        const newCollection = {
+            name: name,
+            albumIds: [],
+        }
+        const res = await axios.post(localCollectionsURL, newCollection);
+        commit('newCollection', res.data);
+    }
     
 };
 

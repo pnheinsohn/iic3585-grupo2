@@ -19,15 +19,6 @@
       "id": 2
     },
     {
-      "mbid": "51e9188f-7378-492f-8881-b3abb525080c",
-      "name": "Canción Animal",
-      "artist": "Soda Stereo",
-      "reviews": [],
-      "score": 4.5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/1c867340998d4c449a1d1159ef95d451.png",
-      "id": 3
-    },
-    {
       "mbid": "c59220cd-5956-4576-b521-a47f738f2ed4",
       "name": "Invisible",
       "artist": "Invisible",
@@ -50,38 +41,91 @@
       "name": "Kid A",
       "artist": "Radiohead",
       "reviews": [],
-      "score": 0,
+      "score": 5,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/248cb85037351002251836e5f2f0d76b.png",
       "id": 17
     },
     {
-      "mbid": "8a36348d-c96b-46c3-adc6-faf765597a07",
-      "name": "Bocanada",
-      "artist": "Gustavo Cerati",
+      "mbid": "a2f73eb8-eee6-3588-8909-9046058a468e",
+      "name": "Wish You Were Here",
+      "artist": "Pink Floyd",
       "reviews": [],
-      "score": 0,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/b9e3f62f82e8961e034052b7dc0e8bf1.png",
-      "id": 18
+      "score": 4.5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/394cfbc6b2a74766a4364778c641ca51.png",
+      "id": 19
+    },
+    {
+      "mbid": "15ddcc8d-968e-49a1-bd14-b05a718d2b24",
+      "name": "Wild Mood Swings",
+      "artist": "The Cure",
+      "reviews": [],
+      "score": 5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/d76eebcaaa9a0b16c20da03bcccad8fa.png",
+      "id": 23
+    },
+    {
+      "mbid": "bdf93ecb-85e8-3505-98f7-e2e8c5052723",
+      "name": "OK Computer",
+      "artist": "Radiohead",
+      "reviews": [],
+      "score": 5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/62d26c6cb4ac4bdccb8f3a2a0fd55421.png",
+      "id": 24
+    },
+    {
+      "mbid": "98628230-6bdf-40f1-b5da-141157acba27",
+      "name": "Physical Graffiti",
+      "artist": "Led Zeppelin",
+      "reviews": [],
+      "score": 5,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/afda1e0f83e94234c22bac691f92b2b0.png",
+      "id": 25
     }
   ],
   "playlists": [
     {
       "id": 1,
-      "name": "Música argentina",
+      "name": "Discos argentinos",
       "albumIds": [
-        3,
-        16,
         8,
-        18
+        16,
+        18,
+        3,
+        2,
+        22,
+        21
       ]
     },
     {
-      "id": 2,
-      "name": "Música en inglés",
+      "name": "Música para viajar",
       "albumIds": [
+        18,
+        17,
+        16,
         8,
-        3
-      ]
+        3,
+        2,
+        1
+      ],
+      "id": 3
+    },
+    {
+      "name": "Discos de los 90's",
+      "albumIds": [
+        18,
+        24,
+        23
+      ],
+      "id": 4
+    },
+    {
+      "name": "Grandes clásicos",
+      "albumIds": [
+        17,
+        25,
+        22
+      ],
+      "id": 5
     }
   ]
 }

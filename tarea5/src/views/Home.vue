@@ -22,8 +22,6 @@ export default {
   },
   async created() {
     try {
-      /* const res = await axios.get(localMainURL);
-      this.albums = res.data; */
       if (!this.allAlbums.length) {
         await this.fetchAlbums();
       }
@@ -33,7 +31,11 @@ export default {
   },
   computed: mapGetters(["allAlbums"]),
   methods: {
-    ...mapActions(["fetchAlbums", "addAlbum", "removeAlbum"]),
+    ...mapActions([
+      "fetchAlbums",
+      "addAlbum",
+      "removeAlbum"
+    ]),
   }
 }
 </script>

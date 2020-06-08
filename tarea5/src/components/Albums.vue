@@ -1,11 +1,10 @@
 <template>
-  <carousel
-    ref="my-carousel"
+  <carousel class="carousel"
     :loop="true"
     :autoplay="true"
     :autoplayTimeout="10000"
     :autoplayHoverPause="true"
-    :perPage="6"
+    :perPage="7"
     :navigationEnabled="true"
     :speed="1500"
     :centerMode="true">
@@ -39,27 +38,9 @@ export default {
 </script>
 
 <style scoped>
-  .holding {
-    display: flex;
+  .carousel {
     width: 100%;
-    background: #2c3e50;
-    padding: 50px;
-    box-sizing: border-box;
-    flex-direction: row;
   }
 
-  .album {
-    display: flex;
-    flex: 1;
-    background: black;
-    margin: 3px;
-    flex-direction: column;
-  }
-
-  @media screen and (max-width: 768px) {
-    .holding{
-      flex-direction: column;
-    }
-  }
 
 </style>

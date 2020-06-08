@@ -14,6 +14,7 @@ const state = {
 const getters = {
     allAlbums: state => state.albums,
     shownAlbums: state => state.shownAlbums,
+    shownCollectionId: state => state.shownCollectionId
   };
   
 const actions = {
@@ -52,7 +53,6 @@ const actions = {
           res.data.collections = []
           commit('newAlbum', res.data);
         }
-        
     },
     async removeAlbum({ commit }, albumId) {
         await axios.delete(localMainURL + '/' + albumId);
@@ -71,6 +71,9 @@ const actions = {
         album.collections = album.collections
             .filter(id => id != collection.id);
         commit('removeFromShownAlbums', albumId);
+    },
+    async resetShownCollection({ commit }, collectionId) {
+      commit('setShownCollectionId', collectionId);
     }
     
 };
@@ -99,7 +102,7 @@ const mutations = {
   },
   setShownCollectionId: (state, collectionId) => {
     state.shownCollectionId = collectionId;
-  }
+  },
 
 };
 

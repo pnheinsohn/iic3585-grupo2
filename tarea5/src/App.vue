@@ -3,7 +3,7 @@
     <Header />
     <div class="section columns">
       <NavBar v-bind:collections="allCollections"/>
-      <main class="column">
+      <main class="main-column">
         <router-view />
       </main>
     </div>
@@ -22,7 +22,8 @@
         <div
           class="collection-line"
           v-bind:key="collection.id"
-          v-for="collection in allCollections.slice().reverse()"
+          v-for="collection in allCollections
+            .slice().reverse()"
         >
           <input
             type="checkbox"
@@ -148,5 +149,6 @@ export default {
   .fade-leave-to {
     opacity: 0;
   }
+
 
 </style>

@@ -1,11 +1,10 @@
 <template>
-    <carousel
-        ref="my-carousel"
+    <carousel class="carousel"
         :loop="true"
         :autoplay="true"
         :autoplayTimeout="10000"
         :autoplayHoverPause="true"
-        :perPage="6"
+        :perPage="7"
         :navigationEnabled="true"
         :speed="1500"
         :centerMode="true">
@@ -32,37 +31,12 @@ export default {
         Carousel,
         Slide,
     },
-    data() {
-        return {
-            name: '',
-            albums: [],
-            albumIds: [],
-        }
-    },
     computed: mapGetters([
     "shownAlbums",
     "allAlbums"
     ]),
     async created() {
         try {
-            /* const playlistRes = await axios.get(playlistsURL, {
-                params: {
-                    id: this.$route.params.id,
-                }
-            });
-            const albumIds = playlistRes.data[0].albumIds;
-            this.albumIds = albumIds;
-            const albumPromises = albumIds.map(async (id) => {
-                return await axios.get(localAlbumsURL, {
-                    params: {
-                        id,
-                    }
-                });
-            });
-            const solvedPromises = await Promise.all(albumPromises);
-            solvedPromises.forEach((res) => {
-                this.albums = [...this.albums, res.data[0]];
-            }); */
             if (!this.allAlbums.length) {
             await this.fetchAlbums();
             this.changeShownAlbums(this.$route.params.id);
@@ -82,4 +56,7 @@ export default {
 </script>
 
 <style>
+.carousel {
+    width: 100%;
+  }
 </style>
