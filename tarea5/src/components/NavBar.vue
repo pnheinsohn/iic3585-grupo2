@@ -9,11 +9,17 @@
       <p class="menu-label">Collections</p>
       <li v-bind:key="collection.id" v-for="collection in collections.slice().reverse()">
           <router-link
+            @click="changeShownAlbums(collection.id)"
             :to="{
               name: 'collection',
               params: { id: collection.id }
             }"
-            class="link-label"> {{ collection.name }}
+            class="link-label"
+            
+          >
+          <span v-on:click="changeShownAlbums(collection.id)">
+            {{ collection.name }}
+          </span>
           </router-link>
       </li>
     </ul>
@@ -23,11 +29,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 
 export default {
   name: "NavBar",
   components: {
     
+  },
+  methods: {
+    ...mapActions(["changeShownAlbums"]),
   },
   props: ["collections"],
 }

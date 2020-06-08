@@ -31,9 +31,13 @@
             type="checkbox"
             id="checkbox"
             :value="collection.id"
-            v-model="modalAlbum.collections">
+            v-model="modalAlbum.collections"
+            @change="addAlbumToCollection({
+              album: modalAlbum,
+              collection:collection,
+              event: $event,
+            })">
           <p>{{ collection.name }}</p>
-          <p>{{modalAlbum.collections}}</p>
         </div>
       </div>
     </transition>
@@ -58,18 +62,27 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["changeShowModalState", "fetchCollections"]),
+    ...mapActions([
+      "changeShowModalState",
+      "fetchCollections",
+      "fetchAlbums",
+      "addAlbumToCollection"
+    ]),
     
   },
   computed: mapGetters([
     "showModalId",
     "allCollections",
     "albumInCollection",
-    "modalAlbum"
+    "modalAlbum",
+    "allAlbums"
   ]),
   async created() {
     try {
       this.fetchCollections();
+      if (!this.allAlbums.length) {
+        this.fetchAlbums();
+      }
       
     } catch(error) {
       console.error(error);

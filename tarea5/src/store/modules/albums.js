@@ -5,17 +5,25 @@ const localMainURL = "http://localhost:3000/albums";
 
 const state = {
     albums: [],
+    shownAlbums: [],
 };
 
 const getters = {
     allAlbums: state => state.albums,
-    
+    shownAlbums: state => state.shownAlbums,
   };
   
 const actions = {
     async fetchAlbums({ commit }) {
         const response = await axios.get(localMainURL);
         commit('setAlbums', response.data);
+    },
+    async changeShownAlbums({ commit }, collectionId) {
+      const collection = collections.state.collections
+        .filter(collection => collection.id == collectionId)[0];
+      const albums = state.albums
+        .filter(album => collection.albumIds.includes(album.id));
+      commit('setShownAlbums', albums);
     },
     async addAlbum({ commit }, albumData) {
 
@@ -64,7 +72,9 @@ const mutations = {
   newAlbum: (state, album) => state.albums = [...state.albums, album],
   removeAlbum: (state, id) =>
   (state.albums = state.albums.filter(album => album.id !== id)),
-  
+  setShownAlbums: (state, albums) => {
+    state.shownAlbums = albums;
+  }
 };
 
 

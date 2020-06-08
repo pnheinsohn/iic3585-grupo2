@@ -80,6 +80,15 @@
       "score": 0,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/b9e3f62f82e8961e034052b7dc0e8bf1.png",
       "id": 20
+    },
+    {
+      "mbid": "a2f73eb8-eee6-3588-8909-9046058a468e",
+      "name": "Wish You Were Here",
+      "artist": "Pink Floyd",
+      "reviews": [],
+      "score": 0,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/394cfbc6b2a74766a4364778c641ca51.png",
+      "id": 21
     }
   ],
   "playlists": [
@@ -93,16 +102,17 @@
         14,
         16,
         17,
-        20
+        20,
+        19
       ]
     },
-
     {
       "id": 2,
       "name": "Música en inglés",
       "albumIds": [
         1,
-        19
+        19,
+        21
       ]
     }
   ]

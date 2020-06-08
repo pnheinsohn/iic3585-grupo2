@@ -7,8 +7,8 @@ const state = {
 const getters = {
     showModalId: state => state.showModal,
     modalAlbum: state => {
-        const modalAlbum = albums.state.albums.filter(album => album.id == state.showModal)[0]
-        console.log(modalAlbum.collections);
+        const modalAlbum = albums.state.albums.
+            filter(album => album.id == state.showModal)[0]
         return modalAlbum;
     }
 };

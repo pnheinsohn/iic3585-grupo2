@@ -17,34 +17,27 @@ const actions = {
         const response = await axios.get(localCollectionsURL);
         commit('setCollections', response.data);
     },
-    
-    /* async fetchCollectionsById({ commit }, collectionId) {
-        const playlistRes = await axios.get(localCollectionsURL, {
-            params: {
-                id: collectionId,
-            }
+    async addAlbumToCollection( _, { event, album, collection }) {
+        if (event.target.checked) {
+            collection.albumIds.push(album.id)
+        }
+        else {
+            collection.albumIds = collection.albumIds.filter(id => id != album.id);
+        }
+        await axios.patch(localCollectionsURL + '/' + collection.id, {
+            albumIds: collection.albumIds,
         });
-        const albumIds = playlistRes.data[0].albumIds;
-        this.albumIds = albumIds;
-        const albumPromises = albumIds.map(async (id) => {
-            return await axios.get(localAlbumsURL, {
-                params: {
-                    id,
-                }
-            });
-        });
-        const solvedPromises = await Promise.all(albumPromises);
-        solvedPromises.forEach((res) => {
-            this.albums = [...this.albums, res.data[0]];
-        });
-    }, */
+    },
     
 };
 
 const mutations = {
     setCollections: (state, collections) => (state.collections = collections),
     newCollection: (state, collection) => state.collections.unshift(collection),
-
+    setCollectionsAlbums: (state, collection) => {
+        console.log(state)
+        console.log(collection)
+    }
 };
 
 

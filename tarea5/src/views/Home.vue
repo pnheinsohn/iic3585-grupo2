@@ -25,7 +25,7 @@ export default {
       /* const res = await axios.get(localMainURL);
       this.albums = res.data; */
       if (!this.allAlbums.length) {
-        this.fetchAlbums();
+        await this.fetchAlbums();
       }
     } catch(error) {
       console.error(error);
