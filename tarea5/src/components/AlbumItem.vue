@@ -18,33 +18,21 @@
       </star-rating>
     </div>
     <div class="album-cover-container">
-      <img class="album-cover" :src=album.image />
+      <img
+        class="album-cover"
+        :src=album.image
+        @click="changeShowModalState(album.id)"/>
     </div>
     
   </div>
 </template>
 
 <script>
-/* import Vuex from 'vuex'; */
 import StarRating from 'vue-star-rating';
 import axios from 'axios';
+import { mapActions } from 'vuex';
 
 const localMainURL = "http://localhost:3000/albums";
-
-/* const store = new Vuex.Store({
-  state: {
-    score: 0
-  },
-  mutations: {
-
-  },
-  actions: {
-  
-  },
-  getters:{
-
-  },
-}); */
 
 export default {
   name: "AlbumItem",
@@ -53,6 +41,7 @@ export default {
     StarRating
   },
   methods: {
+    ...mapActions(["changeShowModalState"]),
     async updateRating(rating, album){
       await axios.patch(localMainURL + '/' + album.id, {
           score: rating,
@@ -71,7 +60,7 @@ export default {
 
   .album-name {
     flex: 2;
-    height: 50px;
+    height: 30px;
     color: white;
   }
 
@@ -79,6 +68,7 @@ export default {
     flex: 1;
     height: 20px;
     color: #1DB954;
+    margin: 15px;
   }
 
   .album-cover {
@@ -88,6 +78,7 @@ export default {
     margin: 10px;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
   }
 
   .album-cover-container {
@@ -116,5 +107,6 @@ export default {
     display: flex;
     left:91%;
     top:0%;
+    cursor: pointer;
   }
 </style>
