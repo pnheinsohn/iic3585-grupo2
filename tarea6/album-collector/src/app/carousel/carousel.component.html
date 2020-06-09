@@ -1,0 +1,43 @@
+<div id="carousel-div">
+<div *ngIf="results.length != 0; else noResults">
+  <h4>Showing results for {{searchInput}}</h4>
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let item of results">
+      <ng-template carouselSlide>
+        <div class="card-container">
+          <img src="{{item.image[2]['#text']}}">
+          <div class="card-content">
+            <h4><b>{{item.artist}}</b></h4>
+            <p>{{item.name}}</p>
+          </div>
+          <button class="add-del-btn" *ngIf="!parent; else delBtn" (click)="open(myModal, item)">Add</button>
+          <ng-template #delBtn>
+            <button class="add-del-btn" (click)="delFromCollection(item)">Del</button>
+          </ng-template>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>
+
+<ng-template #noResults>
+  <i *ngIf="searchInput">No results where found</i>
+</ng-template>
+
+<ng-template #myModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Adding to...</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cancel')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <select [(ngModel)]="selected">
+      <option disabled>Choose collection</option>
+      <option *ngFor="let collection of this.collections | async" value="{{collection.name}}">{{collection.name}}</option>
+    </select>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Add')">Add</button>
+  </div>
+</ng-template>

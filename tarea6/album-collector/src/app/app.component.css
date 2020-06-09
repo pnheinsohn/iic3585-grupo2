@@ -1,0 +1,22 @@
+.columns {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.leftColumn, .rightColumn {
+  padding: 1%;
+  display: inline-block;
+  flex-flow: column;
+}
+
+.leftColumn {
+  border-right: solid #0E3B60;
+  max-width: 300px;
+  flex: 1;
+}
+
+.rightColumn {
+  flex: 4;
+  width: 80%;
+}

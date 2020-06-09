@@ -1,0 +1,36 @@
+div {
+  padding: 1%;
+}
+
+nav a {
+  display: block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+
+nav a:hover {
+  background-color: #cfd8dc;
+}
+
+nav a:visited, a:link {
+  color: #0E3B60;
+}
+
+nav a.active {
+  color: #0E3B60;
+}
+
+.input-group-button {
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.input-collection-c {
+  width: 100%;
+  box-sizing: border-box;
+}

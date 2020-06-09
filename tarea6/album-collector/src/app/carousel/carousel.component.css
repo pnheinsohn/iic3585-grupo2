@@ -1,0 +1,35 @@
+.modal-header {
+  color: #0E3B60;
+}
+
+.card-container {
+  width: 150px;
+  min-height: 300px;
+  overflow: hidden;
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #0E3B60;
+  position: relative;
+}
+
+/* Add some padding inside the card container */
+.card-content {
+  padding: 2px 16px;
+}
+
+.add-del-btn {
+  width: 90%;
+  bottom: 5px;
+  right: 7.5px;
+  border-radius: 10px;
+  position: absolute;
+  color: #0E3B60;
+  background-color: #eeeeee;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

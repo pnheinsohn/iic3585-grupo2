@@ -1,0 +1,20 @@
+<div>
+    <h3>Menu</h3>
+    <nav>
+      <a routerLink="/dashboard">
+        <span>Explorer</span>
+      </a>
+      <div id="collections">
+        <h5>Collections</h5>
+        <div class="input-group-button">
+          <input #textInput class="input-collection-c" placeholder="New Collection"/>
+          <button class="btn-collection-c" (click)="addCollection(textInput.value)">+</button>
+        </div>
+        <div *ngFor="let collection of collections | async">
+          <a routerLink="/collections/{{collection.name}}">
+            <span>{{collection.name}}</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+</div>

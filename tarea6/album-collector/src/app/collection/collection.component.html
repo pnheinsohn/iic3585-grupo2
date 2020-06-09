@@ -1,0 +1,11 @@
+<div class="collection-container">
+  <h3>{{name}}</h3>
+  <div *ngIf="albums && albums.length !== 0; else noAlbums">
+    <app-carousel
+      [parent]="name"
+      [results]="albums"></app-carousel>
+  </div>
+  <ng-template #noAlbums>
+    <i>No albums stored</i>
+  </ng-template>
+</div>
