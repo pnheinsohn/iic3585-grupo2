@@ -1,0 +1,18 @@
+<div id="dashboard">
+  <h3>{{title}}</h3>
+  <div id="input-icons">
+    <i class="fa fa-search icon"></i>
+    <input
+      #searchBox
+      id="search-box"
+      class="input-field"
+      (input)="search(searchBox.value)"
+      placeholder="Search artists and songs" />
+  </div>
+  <div *ngIf="currentResults">
+    <app-carousel
+      [results]="currentResults"
+      [searchInput]="searchInput">
+    </app-carousel>
+  </div>
+</div>
