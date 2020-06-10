@@ -10,7 +10,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { ExplorerComponent } from './dashboard/dashboard.component';
 import { CollectionComponent } from './collection/collection.component';
 import { MenuComponent } from './menu/menu.component';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -23,7 +23,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     HeaderComponent,
     MenuComponent,
-    DashboardComponent,
+    ExplorerComponent,
     CollectionComponent,
     CarouselComponent,
   ],

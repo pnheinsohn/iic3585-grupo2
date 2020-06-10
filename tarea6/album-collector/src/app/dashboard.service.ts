@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { AlbumApiResponse } from './types/album';
 
 @Injectable({providedIn: 'root'})
-export class DashboardService {
+export class ExplorerService {
   private apiUrlStart: string = 'http://ws.audioscrobbler.com/2.0';
   private apiUrlEnding: string = '&api_key=26a99486ffe249719e660f338f6c3498&format=json';
   private albumsURL: string = `${this.apiUrlStart}/?method=album.search&album`;
