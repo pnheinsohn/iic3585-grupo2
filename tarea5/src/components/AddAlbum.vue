@@ -45,7 +45,7 @@ export default {
 <style scoped>
   form {
     padding: 0px;
-    position:absolute; left:35%; top:80%;
+    position:absolute; left:35%; top:60%;
   }
 
   input[type="text"] {
