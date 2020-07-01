@@ -1,23 +1,67 @@
-import {
-  containerTemplate,
-  resultsTemplate,
-  cardTemplate,
-  starRatingTemplate,
-} from './templates.js';
+import { fuse } from './db.js';
+import { searcherTemplate, cardTemplate } from './templates.js';
 
-class Container extends HTMLElement {
+class SearchCards extends HTMLElement {
   constructor() {
     super();
+    this.results = "";
     this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(containerTemplate.content.cloneNode(true));
+    this.shadowRoot.appendChild(searcherTemplate.content.cloneNode(true));
+
+    this.setResults = this.setResults.bind(this);
+    this.debounce = this.debounce.bind(this);
+
+    this.searchBar = this.shadowRoot.querySelector("#search-bar");
+    this.itemCards = this.shadowRoot.querySelector("#item-cards");
   }
-}
 
-class ItemCards extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(resultsTemplate.content.cloneNode(true));
+  setResults() {
+    this.results = fuse.search(this.searchBar.value);
+
+    this.itemCards.innerHTML = `
+      <style>
+        .item-cards {
+          display: flex;
+          flex-direction: row;
+          align-items: stretch;
+        }
+      </style>
+      <div class="item-cards">
+    `;
+    this.results.forEach(result => {
+      this.itemCards.innerHTML += `
+        <item-card
+          name=${result.item.name}
+          brand=${result.item.brand}
+          picture=${result.item.picture}
+          specs=${result.item.specs}
+          price=${result.item.price}
+        >
+        </item-card>
+      `;
+    });
+    this.itemCards.innerHTML += "</div>";
+  }
+
+  debounce(func, wait) {
+    let timeout;
+    return (...args) => {
+      const later = () => {
+        timeout = null;
+        func(...args);
+      };
+
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    }
+  }
+
+  connectedCallback() {
+    this.shadowRoot.addEventListener("input", this.debounce(this.setResults, 300));
+  }
+
+  disconnectedCallback() {
+    this.shadowRoot.removeEventListener("input", null);
   }
 }
 
@@ -32,9 +76,6 @@ class ItemCard extends HTMLElement {
     this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
     this.shadowRoot.querySelector('.specs').innerText = this.getAttribute('specs');
     this.shadowRoot.querySelector('.price').innerText = this.getAttribute('price');
-    this.shadowRoot.querySelector('.stars').innerHTML = `
-      <x-star-rating value="3" number="5"></x-star-rating>
-    `;    
   }
 
   toggleInfo() {
@@ -60,19 +101,15 @@ class ItemCard extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.shadowRoot.querySelector('#toggle-info').removeEventListener();
+    this.shadowRoot.querySelector('#toggle-info').removeEventListener('click', null);
   }
 }
-
 
 class StarRating extends HTMLElement {
   constructor() {
     super();
     this.number = this.number;
 
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(starRatingTemplate.content.cloneNode(true));
-    
     this.shadowRoot.addEventListener('mousemove', e => {
       let box = this.getBoundingClientRect(),
         starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
@@ -93,26 +130,6 @@ class StarRating extends HTMLElement {
       this.shadowRoot.dispatchEvent(rateEvent);
     });
 
-
-
-    this.setAttribute('number', 5);
-    this.stars = [];
-
-    while (this.firstChild) {
-      this.removeChild(this.firstChild);
-    }
-    
-    for (let i = 0; i < this.number; i++) {
-      let s = document.createElement('div');
-      s.className = 'star';
-      this.shadowRoot.appendChild(s);
-      this.stars.push(s);
-      console.log(this.shadowRoot)
-    }
-
-    this.value = this.value;
-
-
   }
 
   get value() {
@@ -129,18 +146,18 @@ class StarRating extends HTMLElement {
   }
 
   set number(val) {
+    this.attachShadow({ mode: 'open' });
     this.setAttribute('number', val);
-
     this.stars = [];
 
-    while (this.firstChild) {
-      this.removeChild(this.firstChild);
+    while (this.shadowRoot.firstChild) {
+      this.shadowRoot.removeChild(this.shadowRoot.firstChild);
     }
     
     for (let i = 0; i < this.number; i++) {
       let s = document.createElement('div');
       s.className = 'star';
-      this.appendChild(s);
+      this.shadowRoot.appendChild(s);
       this.stars.push(s);
     }
 
@@ -154,7 +171,6 @@ class StarRating extends HTMLElement {
   }
 }
 
-window.customElements.define('x-star-rating', StarRating);
+window.customElements.define('retail-app', SearchCards);
 window.customElements.define('item-card', ItemCard);
-window.customElements.define('item-cards', ItemCards);
-window.customElements.define('retail-app', Container);
+window.customElements.define('x-star-rating', StarRating);

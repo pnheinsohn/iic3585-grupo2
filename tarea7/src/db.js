@@ -1,4 +1,4 @@
-const items = [
+export const items = [
     {
     "name": "IPhone 11",
     "brand": "APPLE",
@@ -28,4 +28,11 @@ const items = [
     }
 ];
 
-export default items;
+const options = {
+    keys: [
+        "name",
+        "brand",
+    ]
+}
+
+export const fuse = new Fuse(items, options);
