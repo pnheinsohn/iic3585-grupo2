@@ -4,13 +4,13 @@
         :autoplay="true"
         :autoplayTimeout="10000"
         :autoplayHoverPause="true"
-        :perPage="7"
+        :perPage="6"
         :navigationEnabled="true"
         :speed="1500"
         :centerMode="true">
         <slide
             v-bind:key="album.id"
-            v-for="album in shownAlbums.slice().reverse()">
+            v-for="album in shownAlbums">
             <AlbumItem
                 v-bind:album="album"
                 v-on:remove-album="removeFromCollection"/>

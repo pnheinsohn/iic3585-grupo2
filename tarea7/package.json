@@ -1,0 +1,16 @@
+{
+  "name": "tarea7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "star-rating-web-component": "^1.1.1",
+    "webcomponent-star-rating": "^2.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
