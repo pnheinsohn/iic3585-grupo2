@@ -1,3 +1,5 @@
+import items from './db';
+
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
