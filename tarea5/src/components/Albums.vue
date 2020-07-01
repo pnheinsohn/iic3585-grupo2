@@ -29,9 +29,6 @@ export default {
     Slide,
   },
   computed: mapGetters(["allAlbums"]),
-  /* mounted() {
-    this.$refs['my-carousel'].currentPage = this.$refs['my-carousel'].pageCount;
-  } */
 }
 
 

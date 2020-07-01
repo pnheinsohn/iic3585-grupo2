@@ -5,7 +5,7 @@
       "name": "Paranoid",
       "artist": "Black Sabbath",
       "reviews": [],
-      "score": 5,
+      "score": 4,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/60e34acbdc85261c72ba7e059973c5dd.png",
       "id": 1
     },
@@ -59,7 +59,7 @@
       "name": "Wild Mood Swings",
       "artist": "The Cure",
       "reviews": [],
-      "score": 5,
+      "score": 3,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/d76eebcaaa9a0b16c20da03bcccad8fa.png",
       "id": 23
     },
@@ -95,7 +95,7 @@
       "name": "The Wall",
       "artist": "Pink Floyd",
       "reviews": [],
-      "score": 5,
+      "score": 4,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/6af6a9a0d246464f976bef5193823322.png",
       "id": 27
     },
@@ -109,15 +109,6 @@
       "id": 28
     },
     {
-      "mbid": "32872914-ccfa-475f-b9b2-df427416e8a8",
-      "name": "Fome",
-      "artist": "Los Tres",
-      "reviews": [],
-      "score": 4.5,
-      "image": "https://lastfm.freetls.fastly.net/i/u/174s/17168149d5d44f738413f4a979a8e3ee.png",
-      "id": 29
-    },
-    {
       "mbid": "bdc74986-7c40-4e6d-92b9-859de6c31b0d",
       "name": "Disraeli Gears",
       "artist": "Cream",
@@ -125,6 +116,15 @@
       "score": 0,
       "image": "https://lastfm.freetls.fastly.net/i/u/174s/52907e184f756b6f351f7b87acd7005a.png",
       "id": 30
+    },
+    {
+      "mbid": "32872914-ccfa-475f-b9b2-df427416e8a8",
+      "name": "Fome",
+      "artist": "Los Tres",
+      "reviews": [],
+      "score": 0,
+      "image": "https://lastfm.freetls.fastly.net/i/u/174s/17168149d5d44f738413f4a979a8e3ee.png",
+      "id": 31
     }
   ],
   "collections": [
@@ -139,8 +139,8 @@
         2,
         22,
         21,
-        28,
-        26
+        26,
+        28
       ]
     },
     {
@@ -151,7 +151,8 @@
         16,
         3,
         2,
-        1
+        1,
+        28
       ],
       "id": 3
     },
@@ -163,22 +164,32 @@
         23,
         16,
         2,
-        28
+        28,
+        29
       ],
       "id": 4
     },
     {
       "name": "Grandes clásicos",
       "albumIds": [
-        25,
         22,
-        27,
         19,
         8,
         1,
-        30
+        30,
+        25,
+        27,
+        23,
+        31
       ],
       "id": 5
+    },
+    {
+      "name": "Recomendados",
+      "albumIds": [
+        23
+      ],
+      "id": 6
     }
   ]
 }

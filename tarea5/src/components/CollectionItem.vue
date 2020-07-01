@@ -37,9 +37,19 @@ export default {
     ]),
     async created() {
         try {
-            if (!this.allAlbums.length) {
+            if (!this.shownAlbums.length || !this.allAlbums.length) {
             await this.fetchAlbums();
-            this.changeShownAlbums(this.$route.params.id);
+            await this.changeShownAlbums(this.$route.params.id);
+        }
+        } catch(error) {
+            console.error(error);
+        }
+    },
+    async mounted() {
+        try {
+            if (!this.shownAlbums.length || !this.allAlbums.length) {
+            await this.fetchAlbums();
+            await this.changeShownAlbums(this.$route.params.id);
         }
         } catch(error) {
             console.error(error);
