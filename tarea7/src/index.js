@@ -1,4 +1,9 @@
-import {containerTemplate, resultsTemplate, cardTemplate} from './templates.js';
+import {
+  containerTemplate,
+  resultsTemplate,
+  cardTemplate,
+  starRatingTemplate,
+} from './templates.js';
 
 class Container extends HTMLElement {
   constructor() {
@@ -11,7 +16,7 @@ class Container extends HTMLElement {
 class ItemCards extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({mode:'open'});
+    this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(resultsTemplate.content.cloneNode(true));
   }
 }
@@ -27,6 +32,9 @@ class ItemCard extends HTMLElement {
     this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
     this.shadowRoot.querySelector('.specs').innerText = this.getAttribute('specs');
     this.shadowRoot.querySelector('.price').innerText = this.getAttribute('price');
+    this.shadowRoot.querySelector('.stars').innerHTML = `
+      <x-star-rating value="3" number="5"></x-star-rating>
+    `;    
   }
 
   toggleInfo() {
@@ -62,26 +70,49 @@ class StarRating extends HTMLElement {
     super();
     this.number = this.number;
 
-    this.addEventListener('mousemove', e => {
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(starRatingTemplate.content.cloneNode(true));
+    
+    this.shadowRoot.addEventListener('mousemove', e => {
       let box = this.getBoundingClientRect(),
         starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
-
       this.highlight(starIndex);
     });
 
-    this.addEventListener('mouseout', () => {
+    this.shadowRoot.addEventListener('mouseout', () => {
       this.value = this.value;
     });
 
-    this.addEventListener('click', e => {
+    this.shadowRoot.addEventListener('click', e => {
       let box = this.getBoundingClientRect(),
         starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
 
       this.value = starIndex + 1;
 
       let rateEvent = new Event('rate');
-      this.dispatchEvent(rateEvent);
+      this.shadowRoot.dispatchEvent(rateEvent);
     });
+
+
+
+    this.setAttribute('number', 5);
+    this.stars = [];
+
+    while (this.firstChild) {
+      this.removeChild(this.firstChild);
+    }
+    
+    for (let i = 0; i < this.number; i++) {
+      let s = document.createElement('div');
+      s.className = 'star';
+      this.shadowRoot.appendChild(s);
+      this.stars.push(s);
+      console.log(this.shadowRoot)
+    }
+
+    this.value = this.value;
+
+
   }
 
   get value() {
@@ -105,7 +136,7 @@ class StarRating extends HTMLElement {
     while (this.firstChild) {
       this.removeChild(this.firstChild);
     }
-
+    
     for (let i = 0; i < this.number; i++) {
       let s = document.createElement('div');
       s.className = 'star';

@@ -83,9 +83,14 @@ cardTemplate.innerHTML = `
       <p class="price"/></p>
     </div>
     <div class="rating">
-      <x-star-rating value="3" number="5"></x-star-rating>
-      <p>Aquí deberían ir las estrellas</p>
+      <p>Rating:</p>
+      <div class="stars"></div>
     </div>
     <button id="toggle-info">Rating</button>
   </div>
+`;
+
+export const starRatingTemplate = document.createElement('template');
+starRatingTemplate.innerHTML = `
+  <p>nonononono</p>
 `;
