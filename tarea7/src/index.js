@@ -1,76 +1,32 @@
-import items from './db';
+import {containerTemplate, resultsTemplate, cardTemplate} from './templates.js';
 
-const template = document.createElement('template');
-template.innerHTML = `
-  <style>
-  .item-cards {
-    display: flex;
+class Container extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(containerTemplate.content.cloneNode(true));
   }
+}
 
-  .item-card {
-		font-family: 'Arial', sans-serif;
-		background: #f4f4f4;
-    width: 200px;
-    height: 150px;
-    display: inline-block;
-    margin-bottom: 15px;
-    margin-top: 10px;
-		border-bottom: darkorchid 5px solid;
+class ItemCards extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({mode:'open'});
+    this.shadowRoot.appendChild(resultsTemplate.content.cloneNode(true));
   }
-
-	.item-card img {
-    width: 100%;
-    height: 200px;
-	}
-
-	.item-card button {
-		cursor: pointer;
-		background: darkorchid;
-		color: #fff;
-		border: 0;
-		border-radius: 5px;
-    padding: 5px 10px;
-  }
-  
-  .brand {
-    color: #808080;
-  }
-
-  .rating {
-    display: none;
-  }
-
-  </style>
-  <div class="item-card">
-    <img />
-    <div>
-      <p class="brand"></P>
-      <h3></h3>      
-      <div class="info">
-        <p><slot name="specs" /></p>
-        <p><slot name="price" /></p>
-      </div>
-      <div class="rating">
-        <x-star-rating value="3" number="5"></x-star-rating>
-        <p>Aquí deberían ir las estrellas</p>
-      </div>
-      <button id="toggle-info">Rating</button>
-    </div>
-    
-  </div>
-`;
+}
 
 class ItemCard extends HTMLElement {
   constructor() {
     super();
-
     this.showInfo = true;
-
     this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.appendChild(cardTemplate.content.cloneNode(true));
+    this.shadowRoot.querySelector('img').src = this.getAttribute('picture');
     this.shadowRoot.querySelector('.brand').innerText = this.getAttribute('brand');
     this.shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
-    this.shadowRoot.querySelector('img').src = this.getAttribute('picture');
+    this.shadowRoot.querySelector('.specs').innerText = this.getAttribute('specs');
+    this.shadowRoot.querySelector('.price').innerText = this.getAttribute('price');
   }
 
   toggleInfo() {
@@ -80,7 +36,7 @@ class ItemCard extends HTMLElement {
     const rating = this.shadowRoot.querySelector('.rating');
     const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
 
-    if(this.showInfo) {
+    if (this.showInfo) {
       info.style.display = 'block';
       rating.style.display = 'none';
       toggleBtn.innerText = 'Rating';
@@ -100,74 +56,74 @@ class ItemCard extends HTMLElement {
   }
 }
 
-window.customElements.define('item-card', ItemCard);
-
 
 class StarRating extends HTMLElement {
-  get value () {
-      return this.getAttribute('value') || 0;
-  }
+  constructor() {
+    super();
+    this.number = this.number;
 
-  set value (val) {
-      this.setAttribute('value', val);
-      this.highlight(this.value - 1);
-  }
+    this.addEventListener('mousemove', e => {
+      let box = this.getBoundingClientRect(),
+        starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
 
-  get number () {
-      return this.getAttribute('number') || 5;
-  }
+      this.highlight(starIndex);
+    });
 
-  set number (val) {
-      this.setAttribute('number', val);
-
-      this.stars = [];
-
-      while (this.firstChild) {
-          this.removeChild(this.firstChild);
-      }
-
-      for (let i = 0; i < this.number; i++) {
-          let s = document.createElement('div');
-          s.className = 'star';
-          this.appendChild(s);
-          this.stars.push(s);
-      }
-
+    this.addEventListener('mouseout', () => {
       this.value = this.value;
+    });
+
+    this.addEventListener('click', e => {
+      let box = this.getBoundingClientRect(),
+        starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
+
+      this.value = starIndex + 1;
+
+      let rateEvent = new Event('rate');
+      this.dispatchEvent(rateEvent);
+    });
   }
 
-  highlight (index) {
-      this.stars.forEach((star, i) => {
-          star.classList.toggle('full', i <= index);
-      });
+  get value() {
+    return this.getAttribute('value') || 0;
   }
 
-  constructor () {
-      super();
+  set value(val) {
+    this.setAttribute('value', val);
+    this.highlight(this.value - 1);
+  }
 
-      this.number = this.number;
+  get number() {
+    return this.getAttribute('number') || 5;
+  }
 
-      this.addEventListener('mousemove', e => {
-          let box = this.getBoundingClientRect(),
-              starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
+  set number(val) {
+    this.setAttribute('number', val);
 
-          this.highlight(starIndex);
-      });
+    this.stars = [];
 
-      this.addEventListener('mouseout', () => {
-          this.value = this.value;
-      });
+    while (this.firstChild) {
+      this.removeChild(this.firstChild);
+    }
 
-      this.addEventListener('click', e => {
-          let box = this.getBoundingClientRect(),
-              starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
+    for (let i = 0; i < this.number; i++) {
+      let s = document.createElement('div');
+      s.className = 'star';
+      this.appendChild(s);
+      this.stars.push(s);
+    }
 
-          this.value = starIndex + 1;
+    this.value = this.value;
+  }
 
-          let rateEvent = new Event('rate');
-          this.dispatchEvent(rateEvent);
-      });
+  highlight(index) {
+    this.stars.forEach((star, i) => {
+      star.classList.toggle('full', i <= index);
+    });
   }
 }
 
 window.customElements.define('x-star-rating', StarRating);
+window.customElements.define('item-card', ItemCard);
+window.customElements.define('item-cards', ItemCards);
+window.customElements.define('retail-app', Container);
