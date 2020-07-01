@@ -3,7 +3,6 @@ import { State, StateContext, Action, Selector } from '@ngxs/store';
 import { AddCollection, DeleteCollection, AddToCollection, DelFromCollection } from './collections.actions';
 import { CollectionType } from './types/collection';
 import { Injectable } from '@angular/core';
-import { AlbumType } from './types/album';
 
 export interface CollectionsStateModel {
   collections: CollectionType[];
