@@ -4,7 +4,7 @@
     :autoplay="true"
     :autoplayTimeout="10000"
     :autoplayHoverPause="true"
-    :perPage="7"
+    :perPage="6"
     :navigationEnabled="true"
     :speed="1500"
     :centerMode="true">
