@@ -65,9 +65,10 @@ cardTemplate.innerHTML = `
       <p class="price"/></p>
     </div>
     <div class="rating">
-      <x-star-rating value="3" number="5"></x-star-rating>
-      <p>Aquí deberían ir las estrellas</p>
-    </div>
+      <p>Rating:</p>
+      <x-star-rating class="x-star-rating" value="3" number="5"></x-star-rating>
+      <p>*******</p>
+      </div>
     <button id="toggle-info">Rating</button>
   </div>
 `;

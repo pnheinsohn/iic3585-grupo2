@@ -1,5 +1,5 @@
-import {fuse} from './db.js';
-import {searcherTemplate, cardTemplate} from './templates.js';
+import { fuse } from './db.js';
+import { searcherTemplate, cardTemplate } from './templates.js';
 
 class SearchCards extends HTMLElement {
   constructor() {
@@ -110,26 +110,26 @@ class StarRating extends HTMLElement {
     super();
     this.number = this.number;
 
-    this.addEventListener('mousemove', e => {
+    this.shadowRoot.addEventListener('mousemove', e => {
       let box = this.getBoundingClientRect(),
         starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
-
       this.highlight(starIndex);
     });
 
-    this.addEventListener('mouseout', () => {
+    this.shadowRoot.addEventListener('mouseout', () => {
       this.value = this.value;
     });
 
-    this.addEventListener('click', e => {
+    this.shadowRoot.addEventListener('click', e => {
       let box = this.getBoundingClientRect(),
         starIndex = Math.floor((e.pageX - box.left) / box.width * this.stars.length);
 
       this.value = starIndex + 1;
 
       let rateEvent = new Event('rate');
-      this.dispatchEvent(rateEvent);
+      this.shadowRoot.dispatchEvent(rateEvent);
     });
+
   }
 
   get value() {
@@ -146,18 +146,18 @@ class StarRating extends HTMLElement {
   }
 
   set number(val) {
+    this.attachShadow({ mode: 'open' });
     this.setAttribute('number', val);
-
     this.stars = [];
 
-    while (this.firstChild) {
-      this.removeChild(this.firstChild);
+    while (this.shadowRoot.firstChild) {
+      this.shadowRoot.removeChild(this.shadowRoot.firstChild);
     }
-
+    
     for (let i = 0; i < this.number; i++) {
       let s = document.createElement('div');
       s.className = 'star';
-      this.appendChild(s);
+      this.shadowRoot.appendChild(s);
       this.stars.push(s);
     }
 
