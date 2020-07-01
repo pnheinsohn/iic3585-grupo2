@@ -1,18 +1,67 @@
-import {containerTemplate, resultsTemplate, cardTemplate} from './templates.js';
+import {fuse} from './db.js';
+import {searcherTemplate, cardTemplate} from './templates.js';
 
-class Container extends HTMLElement {
+class SearchCards extends HTMLElement {
   constructor() {
     super();
+    this.results = "";
     this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(containerTemplate.content.cloneNode(true));
-  }
-}
+    this.shadowRoot.appendChild(searcherTemplate.content.cloneNode(true));
 
-class ItemCards extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({mode:'open'});
-    this.shadowRoot.appendChild(resultsTemplate.content.cloneNode(true));
+    this.setResults = this.setResults.bind(this);
+    this.debounce = this.debounce.bind(this);
+
+    this.searchBar = this.shadowRoot.querySelector("#search-bar");
+    this.itemCards = this.shadowRoot.querySelector("#item-cards");
+  }
+
+  setResults() {
+    this.results = fuse.search(this.searchBar.value);
+
+    this.itemCards.innerHTML = `
+      <style>
+        .item-cards {
+          display: flex;
+          flex-direction: row;
+          align-items: stretch;
+        }
+      </style>
+      <div class="item-cards">
+    `;
+    this.results.forEach(result => {
+      this.itemCards.innerHTML += `
+        <item-card
+          name=${result.item.name}
+          brand=${result.item.brand}
+          picture=${result.item.picture}
+          specs=${result.item.specs}
+          price=${result.item.price}
+        >
+        </item-card>
+      `;
+    });
+    this.itemCards.innerHTML += "</div>";
+  }
+
+  debounce(func, wait) {
+    let timeout;
+    return (...args) => {
+      const later = () => {
+        timeout = null;
+        func(...args);
+      };
+
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    }
+  }
+
+  connectedCallback() {
+    this.shadowRoot.addEventListener("input", this.debounce(this.setResults, 300));
+  }
+
+  disconnectedCallback() {
+    this.shadowRoot.removeEventListener("input", null);
   }
 }
 
@@ -52,10 +101,9 @@ class ItemCard extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.shadowRoot.querySelector('#toggle-info').removeEventListener();
+    this.shadowRoot.querySelector('#toggle-info').removeEventListener('click', null);
   }
 }
-
 
 class StarRating extends HTMLElement {
   constructor() {
@@ -123,7 +171,6 @@ class StarRating extends HTMLElement {
   }
 }
 
-window.customElements.define('x-star-rating', StarRating);
+window.customElements.define('retail-app', SearchCards);
 window.customElements.define('item-card', ItemCard);
-window.customElements.define('item-cards', ItemCards);
-window.customElements.define('retail-app', Container);
+window.customElements.define('x-star-rating', StarRating);

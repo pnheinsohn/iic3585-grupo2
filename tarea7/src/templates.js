@@ -1,35 +1,17 @@
-import items from './db.js';
-
-export const containerTemplate = document.createElement('template');
-containerTemplate.innerHTML = `
-  <search-bar></search-bar>
-  <item-cards></item-cards>
-`;
-
-export const resultsTemplate = document.createElement('template');
-resultsTemplate.innerHTML = `
+export const searcherTemplate = document.createElement('template');
+searcherTemplate.innerHTML = `
   <style>
-    .item-cards {
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
+    #search-bar {
+      margin: 10px;
+      margin-left: 10px;
+      width: 190px;
+      border-radius: 5px;
     }
   </style>
-  <div class="item-cards">
+  <input id="search-bar" type="text" placeholder="Busca un producto">
+  <div id="item-cards">
+  </div>
 `;
-items.forEach(item => {
-  resultsTemplate.innerHTML += `
-    <item-card
-      name=${item.name}
-      brand=${item.brand}
-      picture=${item.picture}
-      specs=${item.specs}
-      price=${item.price}
-    >
-    </item-card>
-  `;
-});
-resultsTemplate.innerHTML += "</div>";
 
 export const cardTemplate = document.createElement('template');
 cardTemplate.innerHTML = `
