@@ -48,7 +48,7 @@ template.innerHTML = `
         <p><slot name="specs" /></p>
         <p><slot name="price" /></p>
       </div>
-      <div class="rating" style="{width: 50px; height: 50px;}">
+      <div class="rating">
         <x-star-rating value="3" number="5"></x-star-rating>
         <p>Aquí deberían ir las estrellas</p>
       </div>
